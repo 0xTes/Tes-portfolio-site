@@ -224,7 +224,8 @@ INB<span className="text-red-600">.</span> </a>
         <img
           src="/images/Ihuoma Nkechi.png"
           alt="Ihuoma Nkechi Bridget"
-          className="h-[500px] w-full object-cover object-center"
+          className="h-[380px] w-full object-cover object-[center_15%] sm:h-[500px]"
+        
         />
 
         <div className="bg-slate-950 px-8 py-7 text-white">

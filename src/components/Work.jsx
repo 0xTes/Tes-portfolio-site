@@ -2,19 +2,14 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
-    title: "Enterprise Workflow Automation",
+    title: "SEVENTEE Hotel Website",
     description:
-      "Redesigned internal systems to reduce operational bottlenecks and improve team efficiency.",
+      "A motel struggling with manual bookings and repeated loss of physical logbooks. Built a single-page website with an embedded Google Form for digital bookings.",
   },
   {
-    title: "Digital Growth Strategy",
+    title: "Economical Solutions LLC",
     description:
-      "Developed scalable technology roadmaps for business expansion and market positioning.",
-  },
-  {
-    title: "Platform Architecture",
-    description:
-      "Built resilient system architecture for high-growth digital products.",
+      "Helped build and launch an ecommerce website using Ecwid, integrated Tawk.to live chat, managed inventory, and coordinated stakeholders toward business goals.",
   },
 ];
 
@@ -27,10 +22,10 @@ function Work() {
         </p>
 
         <h2 className="text-4xl md:text-5xl font-semibold mb-14 text-slate-900">
-          Solutions that deliver measurable results
+          Projects that solved real business problems
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
@@ -38,10 +33,10 @@ function Work() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.12 }}
-              className="glass-card group rounded-[30px] p-8 min-h-[260px] flex flex-col justify-between transition duration-500 hover:-translate-y-3 hover:shadow-2xl hover:scale-[1.02]"
+              className="glass-card group rounded-[30px] p-8 min-h-[320px] flex flex-col justify-between transition duration-500 hover:-translate-y-3 hover:shadow-2xl hover:scale-[1.02]"
             >
               <div>
-                <h3 className="text-2xl font-semibold text-slate-900 mb-4">
+                <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-4 leading-snug">
                   {project.title}
                 </h3>
 
@@ -51,7 +46,7 @@ function Work() {
               </div>
 
               <span className="mt-8 text-teal-600 font-medium transition duration-300 group-hover:translate-x-1">
-                View Case Study →
+                Project Summary →
               </span>
             </motion.div>
           ))}

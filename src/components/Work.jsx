@@ -1,15 +1,28 @@
 import { motion } from "framer-motion";
 
+import seventeeImage from "../assets/projects/seventee-hotel.png";
+import economicalImage from "../assets/projects/economical-solutions.png";
+import privateImage from "../assets/projects/private-project.png";
+
 const projects = [
   {
     title: "SEVENTEE Hotel Website",
     description:
-      "A motel struggling with manual bookings and repeated loss of physical logbooks. Built a single-page website with an embedded Google Form for digital bookings.",
+      "Built a booking website with Google Form integration, replacing manual reservation logs.",
+    image: seventeeImage,
   },
   {
     title: "Economical Solutions LLC",
     description:
-      "Helped build and launch an ecommerce website using Ecwid, integrated Tawk.to live chat, managed inventory, and coordinated stakeholders toward business goals.",
+      "Built and launched ecommerce infrastructure, integrated live chat, and managed inventory workflows.",
+    image: economicalImage,
+  },
+  {
+    title: "Private Digital Marketing & Branding Platform",
+    description:
+      "Confidential client project focused on conversion optimization and operational workflow improvements.",
+    image: privateImage,
+    private: true,
   },
 ];
 
@@ -28,27 +41,40 @@ function Work() {
         <div className="grid md:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.12 }}
-              className="glass-card group rounded-[30px] p-8 min-h-[320px] flex flex-col justify-between transition duration-500 hover:-translate-y-3 hover:shadow-2xl hover:scale-[1.02]"
-            >
-              <div>
-                <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-4 leading-snug">
-                  {project.title}
-                </h3>
+  key={project.title}
+  initial={{ opacity: 0, y: 35 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ delay: index * 0.12 }}
+  className="group relative overflow-hidden rounded-[30px] min-h-[360px] shadow-xl"
+>
+  {/* Background image */}
+  <img
+    src={project.image}
+    alt={project.title}
+    className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
+  />
 
-                <p className="text-slate-600 leading-relaxed">
-                  {project.description}
-                </p>
-              </div>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/50 group-hover:bg-black/60 transition duration-500" />
 
-              <span className="mt-8 text-teal-600 font-medium transition duration-300 group-hover:translate-x-1">
-                Project Summary →
-              </span>
-            </motion.div>
+  {/* Content */}
+  <div className="relative z-10 flex h-full flex-col justify-end p-8 text-white">
+    {project.private && (
+      <span className="mb-4 w-fit rounded-full bg-white/20 px-4 py-2 text-xs font-semibold backdrop-blur-md">
+        Private Client Deployment
+      </span>
+    )}
+
+    <h3 className="text-xl md:text-2xl font-semibold mb-3">
+      {project.title}
+    </h3>
+
+    <p className="text-white/85 leading-relaxed">
+      {project.description}
+    </p>
+  </div>
+</motion.div>
           ))}
         </div>
       </div>

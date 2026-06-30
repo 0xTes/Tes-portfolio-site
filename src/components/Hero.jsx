@@ -19,17 +19,32 @@ function Hero() {
           </h1>
 
           <p className="text-slate-500 text-lg mt-6 max-w-xl leading-relaxed">
-            Bridget helps organizations modernize operations,
+            Teslim helps organizations modernize operations,
             improve efficiency, and unlock growth through smart
             technology adoption.
           </p>
 
           <div className="flex gap-4 mt-10 flex-wrap">
-            <button className="px-7 py-4 rounded-full bg-teal-500 text-white font-medium shadow-lg">
+            <button className="
+                      px-8 py-4 rounded-full
+                      bg-teal-500 text-white font-semibold
+                      shadow-xl
+                      transition duration-300
+                      hover:scale-105 hover:shadow-2xl
+                    "
+                    
+                  >
               Let’s Talk
             </button>
 
-            <button className="px-7 py-4 rounded-full border border-slate-300 bg-white">
+            <button className="
+                      px-8 py-4 rounded-full 
+                      border border-slate-300 bg-white
+                      font-semibold
+                      transition duration-300
+                      hover:scale-105 hover:shadow-xl
+                    "
+                  >
               View Work
             </button>
           </div>

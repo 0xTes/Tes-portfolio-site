@@ -23,7 +23,19 @@ function LetsTalk() {
             growth, efficiency, and long-term value.
           </p>
 
-          <button className="mt-10 rounded-full bg-teal-500 px-8 py-3 text-white font-medium shadow-lg">
+          <button className="
+                    mt-10 
+                    rounded-full 
+                    bg-teal-500 
+                    px-10 py-5 
+                    text-white 
+                    font-semibold 
+                    shadow-xl
+                    transition duration-300
+                    hover:scale-105
+                    hover:shadow-2xl
+                  "
+                >
             Schedule Consultation
           </button>
         </motion.div>

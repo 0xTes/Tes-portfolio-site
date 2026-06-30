@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 function Hero() {
   return (
-    <section className="hero-gradient min-h-screen flex items-center pt-36 pb-20">
+    <section className="hero-gradient min-h-screen flex items-center pt-36 pb-32">
       <div className="section grid lg:grid-cols-2 gap-16 items-center">
 
         <motion.div
@@ -51,38 +51,44 @@ function Hero() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8 }}
-          className="relative h-[500px]"
-        >
-          <div className="glass-card rounded-[36px] absolute inset-0 transition duration-300 hover:-translate-y-2 hover:shadow-2xl" />
+  initial={{ opacity: 0, y: 40 }}
+  animate={{
+    opacity: 1,
+    y: [0, -8, 0],
+  }}
+  transition={{
+    duration: 4,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+  className="relative flex h-[500px] items-center justify-center"
+>
+  {/* Glow blobs */}
+  <div className="absolute h-72 w-72 rounded-full bg-teal-300/40 blur-3xl" />
+  <div className="absolute right-8 top-20 h-56 w-56 rounded-full bg-emerald-300/30 blur-3xl" />
 
-            {/* ADD THIS BLOCK HERE */}
-  <div className="absolute inset-8 rounded-3xl bg-white/70 p-6">
-    <div className="h-28 rounded-2xl bg-teal-100 mb-4" />
+  {/* Main dashboard card */}
+  <div className="glass-card relative z-10 w-[340px] rounded-[36px] p-6 shadow-2xl">
+    <div className="mb-5 rounded-2xl bg-white p-4 shadow-md">
+      <p className="text-sm text-slate-500">Monthly Growth</p>
+      <h3 className="text-3xl font-bold text-slate-900">+248%</h3>
+    </div>
 
     <div className="grid grid-cols-2 gap-4">
-      <div className="h-24 rounded-2xl bg-emerald-100" />
-      <div className="h-24 rounded-2xl bg-slate-100" />
+      <div className="rounded-2xl bg-teal-50 p-4">
+        <p className="text-sm text-slate-500">Leads</p>
+        <h4 className="text-2xl font-bold">1.8K</h4>
+      </div>
+
+      <div className="rounded-2xl bg-emerald-50 p-4">
+        <p className="text-sm text-slate-500">Sales</p>
+        <h4 className="text-2xl font-bold">$42K</h4>
+      </div>
     </div>
+
+    <div className="mt-5 h-28 rounded-2xl bg-gradient-to-r from-teal-400 to-emerald-400" />
   </div>
-
-  {/* Existing floating card */}
-        <div className="glass-card rounded-3xl p-6 absolute top-12 left-8 w-60 z-10 transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
-            <h3 className="font-semibold">Digital Strategy</h3>
-            <p className="text-sm text-slate-500 mt-2">
-              Growth-focused transformation.
-            </p>
-          </div>
-
-          <div className="glass-card rounded-3xl p-6 absolute bottom-12 right-8 w-64 z-10 transition duration-300 hover:-translate-y-2 hover:shadow-2xl">
-            <h3 className="font-semibold">Systems Design</h3>
-            <p className="text-sm text-slate-500 mt-2">
-              Scalable architecture for teams.
-            </p>
-          </div>
-        </motion.div>
+</motion.div>
 
       </div>
     </section>

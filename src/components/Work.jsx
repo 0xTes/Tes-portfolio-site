@@ -38,7 +38,7 @@ function Work() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.12 }}
-              className="glass-card rounded-[30px] p-8 min-h-[260px] flex flex-col justify-between transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="glass-card group rounded-[30px] p-8 min-h-[260px] flex flex-col justify-between transition duration-500 hover:-translate-y-3 hover:shadow-2xl hover:scale-[1.02]"
             >
               <div>
                 <h3 className="text-2xl font-semibold text-slate-900 mb-4">
@@ -50,7 +50,7 @@ function Work() {
                 </p>
               </div>
 
-              <span className="mt-8 text-teal-600 font-medium">
+              <span className="mt-8 text-teal-600 font-medium transition duration-300 group-hover:translate-x-1">
                 View Case Study →
               </span>
             </motion.div>

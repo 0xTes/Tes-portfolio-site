@@ -31,8 +31,7 @@ function Hero() {
                       shadow-xl
                       transition duration-300
                       hover:scale-105 hover:shadow-2xl
-                    "
-                    
+                    " 
                   >
               Let’s Talk
             </button>

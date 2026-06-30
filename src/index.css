@@ -21,6 +21,7 @@ body,
 }
 
 body {
+  font-family: "Inter", sans-serif;
   background: var(--bg);
   color: var(--text);
   font-family:
@@ -65,4 +66,11 @@ img {
   background:
     radial-gradient(circle at top right, rgba(20,184,166,0.22), transparent 35%),
     radial-gradient(circle at left center, rgba(16,185,129,0.18), transparent 30%);
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
 }

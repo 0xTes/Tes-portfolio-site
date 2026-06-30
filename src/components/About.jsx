@@ -15,7 +15,7 @@ function About() {
           </p>
 
           <h2 className="text-4xl md:text-5xl font-semibold text-slate-900 leading-tight">
-            Technology strategy that drives measurable business growth.
+             Helping businesses scale with smart technology.
           </h2>
         </motion.div>
 
@@ -24,12 +24,14 @@ function About() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="glass-card rounded-[32px] p-8"
+          className="glass-card rounded-[32px] p-8 transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
         >
           <p className="text-slate-600 text-lg leading-relaxed">
-            Teslim partners with founders, teams, and enterprises to
-            design digital systems that improve efficiency, unlock new
-            opportunities, and create sustainable competitive advantage.
+            I help small and medium businesses scale and leverage smart
+            technologies. Whether you need a single-page website, want to
+            win more business, showcase your services, or launch an online
+            store, I can help. My background includes working with diverse
+            companies and managing projects with a detail-oriented approach.
           </p>
         </motion.div>
       </div>

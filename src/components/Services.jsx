@@ -2,19 +2,24 @@ import { motion } from "framer-motion";
 
 const services = [
   {
-    title: "Digital Transformation",
+    title: "Front-end Development",
     description:
-      "Modernizing business operations through strategic technology adoption.",
+      "Precisely rendered and responsive interfaces built with modern web standards for speed, accessibility, and maintainability.",
   },
   {
-    title: "Systems Architecture",
+    title: "Project Management",
     description:
-      "Designing scalable infrastructure and workflow systems.",
+      "Timely delivery of digital projects, on budget and aligned with business goals using agile or waterfall workflows.",
   },
   {
-    title: "Strategic Advisory",
+    title: "Digital Marketing",
     description:
-      "Helping leadership make informed technology decisions.",
+      "Data-driven campaigns using analytics, SEO, content strategy, and paid ads to generate leads and improve conversions.",
+  },
+  {
+    title: "Consultancy",
+    description:
+      "Guidance for startups and growing businesses. I help you leverage smart technology and make growth-based marketing decisions.",
   },
 ];
 
@@ -27,7 +32,7 @@ function Services() {
         </p>
 
         <h2 className="text-4xl md:text-5xl font-semibold mb-14 text-slate-900">
-          High-impact consulting services
+          Services tailored to grow your business
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6">
@@ -38,8 +43,9 @@ function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15 }}
-              className="glass-card rounded-[28px] p-8"
+              className="glass-card rounded-[28px] p-8 transition duration-300 hover:-translate-y-3 hover:shadow-2xl"
             >
+              <div className="w-12 h-1 rounded-full bg-teal-500 mb-5"></div>
               <h3 className="text-xl font-semibold mb-4 text-slate-900">
                 {service.title}
               </h3>

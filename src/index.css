@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --bg: #FFF4EC;
   --primary: #14B8A6;
@@ -21,7 +25,6 @@ body,
 }
 
 body {
-  font-family: "Inter", sans-serif;
   background: var(--bg);
   color: var(--text);
   font-family:

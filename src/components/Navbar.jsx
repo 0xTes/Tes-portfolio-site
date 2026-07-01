@@ -7,6 +7,7 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Work", href: "#work" },
+  { label: "Shop", href: "/shop" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -15,8 +16,8 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="w-[92%] max-w-6xl mx-auto mt-5 rounded-full border border-white/40 bg-white/60 backdrop-blur-xl shadow-lg">
-        <div className="flex items-center justify-between px-6 py-4">
+      <nav className="sticky top-0 z-50 w-full border-b border-white/30 bg-white/85 backdrop-blur-xl shadow-sm">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <Link
             to="/"
             className="text-xl font-bold text-gray-900"
@@ -26,7 +27,16 @@ export default function Navbar() {
           </Link>
           {/* Desktop */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
+            {navLinks.map((link) =>
+              link.href.startsWith("/") ? (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="text-gray-700 hover:text-teal-600 transition"
+                >
+                  {link.label}
+                </Link>
+            ) : (
               <a
                 key={link.label}
                 href={link.href}
@@ -34,8 +44,8 @@ export default function Navbar() {
               >
                 {link.label}
               </a>
-            ))}
-
+            )
+          )}
             <a
               href="#contact"
               className="rounded-full bg-teal-500 px-8 py-4 text-white font-semibold shadow-xl transition duration-300 hover:scale-105 hover:shadow-2xl"
@@ -66,17 +76,25 @@ export default function Navbar() {
             className="fixed top-24 left-1/2 z-40 w-[92%] -translate-x-1/2 rounded-3xl border border-white/40 bg-white/80 p-6 backdrop-blur-xl shadow-2xl md:hidden"
           >
             <div className="flex flex-col gap-5">
-              {navLinks.map((link) => (
-                <a
+              {navLinks.map((link) =>
+              link.href.startsWith("/") ? (
+                <Link
                   key={link.label}
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="text-lg font-medium text-gray-800"
+                  to={link.href}
+                  className="text-gray-700 hover:text-teal-600 transition"
                 >
                   {link.label}
-                </a>
-              ))}
-
+                </Link>
+            ) : (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-gray-700 hover:text-teal-600 transition"
+              >
+                {link.label}
+              </a>
+            )
+          )}
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}

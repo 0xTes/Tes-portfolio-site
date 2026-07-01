@@ -8,12 +8,14 @@ import LetsTalk from "../components/LetsTalk";
 export default function Home() {
   return (
     <>
-      <Navbar />
-      <Hero />
-      <About />
-      <Services />
-      <Work />
-      <LetsTalk />
-    </>
+  <Navbar />
+  <main className="pt-4">
+    <Hero />
+    <About />
+    <Services />
+    <Work />
+    <LetsTalk />
+  </main>
+</>
   );
 }

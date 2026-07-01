@@ -11,11 +11,11 @@ function Hero() {
           transition={{ duration: 0.7 }}
         >
           <p className="uppercase tracking-[0.2em] text-sm text-teal-600 mb-6">
-            Strategic Technology Consulting
+            Digital Strategy • Development • Growth
           </p>
 
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold leading-tight text-slate-900">
-            Building digital ecosystems that scale businesses.
+            Helping businesses leverage smart digital solutions.
           </h1>
 
           <p className="text-slate-500 text-lg mt-6 max-w-xl leading-relaxed">

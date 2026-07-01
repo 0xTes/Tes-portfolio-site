@@ -43,14 +43,14 @@ function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15 }}
-              className="glass-card rounded-[28px] p-8 transition duration-300 hover:-translate-y-3 hover:shadow-2xl"
+              className="glass-card rounded-[28px] p-6 md:p-8 min-h-[260px] md:min-h-[300px] transition duration-300 hover:-translate-y-3 hover:shadow-2xl"
             >
               <div className="w-12 h-1 rounded-full bg-teal-500 mb-5"></div>
               <h3 className="text-xl font-semibold mb-4 text-slate-900">
                 {service.title}
               </h3>
 
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-slate-600 leading-relaxed text-base md:text-lg break-words">
                 {service.description}
               </p>
             </motion.div>

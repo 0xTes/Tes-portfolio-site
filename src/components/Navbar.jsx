@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -13,12 +15,15 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-5 left-1/2 z-50 w-[92%] max-w-6xl -translate-x-1/2 rounded-full border border-white/40 bg-white/60 backdrop-blur-xl shadow-lg">
+      <nav className="w-[92%] max-w-6xl mx-auto mt-5 rounded-full border border-white/40 bg-white/60 backdrop-blur-xl shadow-lg">
         <div className="flex items-center justify-between px-6 py-4">
-          <h1 className="text-xl font-bold text-gray-900">
+          <Link
+            to="/"
+            className="text-xl font-bold text-gray-900"
+            aria-label="Homepage"
+          >
             Teslim Yussuph
-          </h1>
-
+          </Link>
           {/* Desktop */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
@@ -31,9 +36,12 @@ export default function Navbar() {
               </a>
             ))}
 
-            <button className="rounded-full bg-teal-500 px-8 py-4 text-white font-semibold shadow-xl transition duration-300 hover:scale-105 hover:shadow-2xl">
+            <a
+              href="#contact"
+              className="rounded-full bg-teal-500 px-8 py-4 text-white font-semibold shadow-xl transition duration-300 hover:scale-105 hover:shadow-2xl"
+            >
               Book Call
-            </button>
+            </a>
           </div>
 
           {/* Mobile */}
@@ -69,9 +77,13 @@ export default function Navbar() {
                 </a>
               ))}
 
-              <button className="rounded-full bg-teal-500 px-6 py-4 text-white font-semibold shadow-xl">
+              <a
+                href="#contact"
+                onClick={() => setOpen(false)}
+                className="rounded-full bg-teal-500 px-6 py-4 text-white font-semibold shadow-xl text-center"
+              >
                 Book Call
-              </button>
+              </a>
             </div>
           </motion.div>
         )}

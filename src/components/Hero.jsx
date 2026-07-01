@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 function Hero() {
   return (
-    <section className="hero-gradient min-h-screen flex items-center pt-36 pb-32">
+    <section className="hero-gradient min-h-screen flex items-center pt-20 pb-32">
       <div className="section grid lg:grid-cols-2 gap-16 items-center">
 
         <motion.div
@@ -67,25 +67,14 @@ function Hero() {
   <div className="absolute right-8 top-20 h-56 w-56 rounded-full bg-emerald-300/30 blur-3xl" />
 
   {/* Main dashboard card */}
-  <div className="glass-card relative z-10 w-[340px] rounded-[36px] p-6 shadow-2xl">
-    <div className="mb-5 rounded-2xl bg-white p-4 shadow-md">
-      <p className="text-sm text-slate-500">Monthly Growth</p>
-      <h3 className="text-3xl font-bold text-slate-900">+248%</h3>
-    </div>
-
-    <div className="grid grid-cols-2 gap-4">
-      <div className="rounded-2xl bg-teal-50 p-4">
-        <p className="text-sm text-slate-500">Leads</p>
-        <h4 className="text-2xl font-bold">1.8K</h4>
-      </div>
-
-      <div className="rounded-2xl bg-emerald-50 p-4">
-        <p className="text-sm text-slate-500">Sales</p>
-        <h4 className="text-2xl font-bold">$42K</h4>
-      </div>
-    </div>
-
-    <div className="mt-5 h-28 rounded-2xl bg-gradient-to-r from-teal-400 to-emerald-400" />
+  <div className="glass-card relative z-10 w-full max-w-[420px] rounded-[36px] p-6 shadow-2xl">
+    <div className="overflow-hidden rounded-[28px] h-[420px]">
+  <img
+    src="/hero-photo.jpg"
+    alt="Bridget project showcase"
+    className="w-full h-full object-cover transition duration-700 hover:scale-110"
+  />
+</div>
   </div>
 </motion.div>
 

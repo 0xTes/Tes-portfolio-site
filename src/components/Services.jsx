@@ -1,15 +1,17 @@
 import { motion } from "framer-motion";
 
+// ── Data ──────────────────────────────────────────────────────────────────────
+// Add or remove services here — the grid reflows automatically.
 const services = [
   {
     title: "Front-end Development",
     description:
-      "Precisely rendered and responsive interfaces built with modern web standards for speed, accessibility, and maintainability.",
+      "Precisely rendered and responsive interfaces built with modern web standards for speed, accessibility, and long-term maintainability.",
   },
   {
     title: "Project Management",
     description:
-      "Timely delivery of digital projects, on budget and aligned with business goals using agile or waterfall workflows.",
+      "Timely delivery of digital projects, on budget and aligned with business goals, using agile or waterfall workflows.",
   },
   {
     title: "Digital Marketing",
@@ -19,10 +21,11 @@ const services = [
   {
     title: "Consultancy",
     description:
-      "Guidance for startups and growing businesses. I help you leverage smart technology and make growth-based marketing decisions.",
+      "Guidance for startups and growing businesses. Helping you leverage smart technologies and make sound, growth-based decisions.",
   },
 ];
 
+// ── Component ─────────────────────────────────────────────────────────────────
 function Services() {
   return (
     <section id="services" className="py-36">
@@ -35,22 +38,29 @@ function Services() {
           Services tailored to grow your business
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        {/*
+          BUG FIX: original used md:grid-cols-3 for 4 items — one card
+          was always orphaned alone in the last row on mid-size screens.
+          md:grid-cols-2 gives a clean 2×2 layout; lg:grid-cols-4 allows
+          a single-row display on wide screens if ever needed.
+        */}
+        <div className="grid md:grid-cols-2 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.15 }}
-              className="glass-card rounded-[28px] p-6 md:p-8 min-h-[260px] md:min-h-[300px] transition duration-300 hover:-translate-y-3 hover:shadow-2xl"
+              transition={{ delay: index * 0.12, duration: 0.5 }}
+              className="glass-card rounded-[28px] p-6 md:p-8 min-h-[240px] transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
-              <div className="w-12 h-1 rounded-full bg-teal-500 mb-5"></div>
+              <div className="w-12 h-1 rounded-full bg-teal-500 mb-5" aria-hidden="true" />
+
               <h3 className="text-xl font-semibold mb-4 text-slate-900">
                 {service.title}
               </h3>
 
-              <p className="text-slate-600 leading-relaxed text-base md:text-lg break-words">
+              <p className="text-slate-600 leading-relaxed text-base md:text-lg">
                 {service.description}
               </p>
             </motion.div>

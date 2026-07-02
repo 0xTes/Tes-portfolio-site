@@ -15,7 +15,7 @@ function About() {
           </p>
 
           <h2 className="text-4xl md:text-5xl font-semibold text-slate-900 leading-tight">
-             Helping businesses scale with smart technology.
+             Helping businesses scale with smart technologies.
           </h2>
         </motion.div>
 

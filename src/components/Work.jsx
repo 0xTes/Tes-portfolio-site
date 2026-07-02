@@ -46,7 +46,7 @@ function Work() {
   whileInView={{ opacity: 1, y: 0 }}
   viewport={{ once: true }}
   transition={{ delay: index * 0.12 }}
-  className="group relative overflow-hidden rounded-[30px] min-h-[360px] shadow-xl"
+  className="group relative overflow-hidden rounded-[30px] min-h-[420px] shadow-xl"
 >
   {/* Background image */}
   <img

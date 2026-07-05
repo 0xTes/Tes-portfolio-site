@@ -52,7 +52,7 @@ function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.12, duration: 0.5 }}
-              className="glass-card rounded-[28px] p-6 md:p-8 min-h-[240px] transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              className="glass-card rounded-[28px] p-8 md:p-10 min-h-[240px] transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
             >
               <div className="w-12 h-1 rounded-full bg-teal-500 mb-5" aria-hidden="true" />
 

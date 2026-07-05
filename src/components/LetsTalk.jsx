@@ -19,7 +19,7 @@ const contactItems = [
   {
     icon: "📍",
     label: "Location",
-    value: "Nigeria",
+    value: "Mauritius",
     subtitle: "Remote / Nationwide delivery",
     href: null,
   },
@@ -50,22 +50,29 @@ function LetsTalk() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid lg:grid-cols-2 gap-8"
+          className="relative overflow-hidden grid lg:grid-cols-2 gap-8"
         >
-          {/* ── Left column: contact info ── */}
-          <div className="relative overflow-hidden rounded-[40px] glass-card p-8 md:p-12">
-            {/* Wallpaper text */}
-            <div
-              className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
-              aria-hidden="true"
-            >
-              <span className="text-[100px] md:text-[150px] font-black tracking-tight text-slate-900 opacity-[0.03] leading-none">
-                CONTACT
-              </span>
-            </div>
+          {/* Wallpaper text — lives on the shared grid container (not inside
+              either card) so it runs behind both "Get in touch" and "Ready
+              to start your project" as one continuous watermark. Each card
+              below gets position + z-10 so its own translucent background
+              paints above this layer and the text shows through faintly
+              instead of being covered — or, without the z-10, painting on
+              TOP of the card content, since positioned elements paint above
+              static in-flow content by default regardless of DOM order. */}
+          <div
+            className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+            aria-hidden="true"
+          >
+            <span className="text-[140px] md:text-[220px] lg:text-[260px] font-black tracking-tight text-slate-900 opacity-[0.04] leading-none whitespace-nowrap">
+              CONTACT
+            </span>
+          </div>
 
+          {/* ── Left column: contact info ── */}
+          <div className="relative z-10 rounded-[40px] glass-card p-10 md:p-12">
             {/* Foreground */}
-            <div className="relative z-10">
+            <div>
               <p className="uppercase tracking-[0.2em] text-sm text-teal-600 mb-5">
                 Available for new projects
               </p>
@@ -131,7 +138,7 @@ function LetsTalk() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="glass-card rounded-[40px] p-8 md:p-12 flex flex-col justify-between gap-10"
+            className="relative z-10 glass-card rounded-[40px] p-10 md:p-12 flex flex-col justify-between gap-10"
           >
             {/* Status */}
             <div>

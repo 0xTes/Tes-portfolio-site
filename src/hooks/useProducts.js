@@ -27,6 +27,7 @@ export function useProducts({ category, search, perPage = 12, featured } = {}) {
           perPage,
           featured,
         });
+
         setProducts(data.products ?? data ?? []);
         // Store API returns pagination info in the `total` header set on the
         // raw response; since our proxy passes JSON straight through, we

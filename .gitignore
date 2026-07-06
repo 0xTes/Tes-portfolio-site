@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Vercel local project metadata
+.vercel/
+
+# Ignore all environment files...
+.env*
+
+# ...except the template committed to Git
+!.env.example
+.vercel
+.env*

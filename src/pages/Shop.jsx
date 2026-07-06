@@ -1,39 +1,84 @@
+// src/pages/Shop.jsx
+import { useState } from "react";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import SEO from "../components/shop/SEO";
+import SearchBar from "../components/shop/SearchBar";
+import CategoryFilter from "../components/shop/CategoryFilter";
+import ProductGrid from "../components/shop/ProductGrid";
+import AdSlot from "../components/shop/AdSlot";
+import { useCategories } from "../hooks/useCategories";
+import { useProducts } from "../hooks/useProducts";
+
 export default function Shop() {
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [search, setSearch] = useState("");
+
+  const { categories, isLoading: categoriesLoading } = useCategories();
+  const {
+    products,
+    isLoading,
+    isError,
+    error,
+    page,
+    totalPages,
+    nextPage,
+    prevPage,
+    refetch,
+  } = useProducts({ category: activeCategory, search });
+
   return (
-    <main className="min-h-screen bg-[#FFF4EC] px-6 py-20">
-      <div className="mx-auto max-w-6xl">
-        <h1 className="text-4xl md:text-6xl font-semibold text-slate-900">
-          Digital Resources Shop
-        </h1>
+    <>
+      <SEO
+        title="Shop — Teslim Yussuph | Merch, Digital Courses, Books & Music"
+        description="Branded merch, digital courses and eBooks, physical books, and featured artist music — shop it all in one place."
+        path="/shop"
+      />
 
-        <p className="mt-6 max-w-2xl text-lg text-slate-600">
-          Templates, guides, and digital resources designed to help
-          businesses scale smarter.
-        </p>
+      <Navbar />
 
-        <div className="mt-14 grid gap-6 md:grid-cols-3">
-          <div className="glass-card rounded-[28px] p-8">
-            <h3 className="text-xl font-semibold">Website Starter Kit</h3>
-            <p className="mt-3 text-slate-600">
-              Launch faster with prebuilt website resources.
-            </p>
+      <main className="min-h-screen bg-[#FFF4EC] px-6 py-20">
+        <div className="mx-auto max-w-6xl">
+          <h1 className="text-4xl md:text-6xl font-semibold text-slate-900">
+            Shop
+          </h1>
+          <p className="mt-6 max-w-2xl text-lg text-slate-600">
+            Merch, digital courses, physical books, and music from the
+            artists we work with — including free blankets for the homeless,
+            on us.
+          </p>
+
+          <div className="mt-10 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+            <CategoryFilter
+              categories={categories}
+              activeSlug={activeCategory}
+              onSelect={setActiveCategory}
+              isLoading={categoriesLoading}
+            />
+            <SearchBar value={search} onChange={setSearch} />
           </div>
 
-          <div className="glass-card rounded-[28px] p-8">
-            <h3 className="text-xl font-semibold">PM Toolkit</h3>
-            <p className="mt-3 text-slate-600">
-              Templates for managing projects efficiently.
-            </p>
+          {/* Leaderboard ad between the controls and the grid — high
+              viewability, doesn't interrupt product browsing. */}
+          <div className="mt-10">
+            <AdSlot slot="leaderboard" />
           </div>
 
-          <div className="glass-card rounded-[28px] p-8">
-            <h3 className="text-xl font-semibold">Marketing Bundle</h3>
-            <p className="mt-3 text-slate-600">
-              Growth templates and campaign planning sheets.
-            </p>
-          </div>
+          <ProductGrid
+            products={products}
+            isLoading={isLoading}
+            isError={isError}
+            error={error}
+            onRetry={refetch}
+            page={page}
+            totalPages={totalPages}
+            onNextPage={nextPage}
+            onPrevPage={prevPage}
+          />
         </div>
-      </div>
-    </main>
+      </main>
+
+      <Footer />
+    </>
   );
 }

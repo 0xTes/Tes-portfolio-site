@@ -6,7 +6,7 @@ const services = [
   {
     title: "Front-end Development",
     description:
-      "Precisely rendered and responsive interfaces built with modern web standards for speed, accessibility, and long-term maintainability.",
+      "Precisely rendered and responsive interfaces built with modern web standards for speed, accessibility, and long-term maintenance.",
   },
   {
     title: "Project Management",

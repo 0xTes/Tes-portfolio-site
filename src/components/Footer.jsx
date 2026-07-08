@@ -11,7 +11,7 @@ export default function Footer() {
         </p>
 
         <p className="mt-3 text-xs text-teal-200">
-          Built with React, Tailwind CSS & WooCommerce
+          Built with React & Tailwind CSS
         </p>
       </div>
     </footer>

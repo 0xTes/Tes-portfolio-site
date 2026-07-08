@@ -1,6 +1,9 @@
 import { motion } from "framer-motion";
 
 // ── Data ──────────────────────────────────────────────────────────────────────
+// Change this variable anytime you need to update your scheduling link (Calendly/Superpeer)
+const BOOKING_URL = "https://calendly.com/your-custom-link";
+
 const contactItems = [
   {
     icon: "📧",
@@ -164,8 +167,11 @@ function LetsTalk() {
 
             {/* CTA */}
             <div>
+              {/* Swapped out the mailto: link for the BOOKING_URL variable */}
               <a
-                href="mailto:hello@prozone-digital.com"
+                href={BOOKING_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 w-full rounded-xl bg-teal-600 py-5 font-semibold text-white transition-all duration-300 hover:bg-teal-700 hover:-translate-y-1"
               >
                 Book a discovery call

@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 
-// ── Data ──────────────────────────────────────────────────────────────────────
-// Change this variable anytime you need to update your scheduling link (Calendly/Superpeer)
-const BOOKING_URL = "https://calendly.com/your-custom-link";
+// ── Configuration ─────────────────────────────────────────────────────────────
+const BOOKING_URL = "https://ablink.send.calendly.com/ls/click?upn=u001.-2FpFZHOmNsCfytAyhc9roxA5LD773niqqD0IJajnN0YWAh4u17NoxhQF3waIyR-2BsCGwZnLuUZCd0bVghPIsvJVm1IDhUtcLmBVWcPM9XzrZLFjMLbB-2FyvrSBKOVhRMAJejcXqGpW8oXU9CEXUwfSS-2FE-2Bf-2BxWJbk3eSG0H7tiOc-2FotmpWjNa7svGw-2Fx-2BXLRxDzeWHN-2FZyaCj9XItenIQkVNQ-3D-3D9XMA_H-2Ba2icJftUiQ5Ai7F-2F6vIehEFbxvzbeRV7-2BVmqbxcRZspqc7IGqgawvffq4y4ee6u7CeqJ-2FhkXVFXyMINd0pZsDB5-2FPaX0Pm1JvFS9hm-2FWJNOtzDzSF8h6vt7yeTRPOawpI1a60zbVJ2-2BkhNW5mqN8dB67G1VCPDXZ8pblxG4VI-2FazVdkWVmKP7i3i7pTc9iPqd3pfDBjkpYFEQZfndwpXFjvNq5g5-2BD-2B-2FwJGOA1Gl1q1PAqxwQzH2PNGiBjcJfTyhR-2BqRudmWbTaEnqWCGBeuA7XOZQGZQrI2a4ngzTf53U6bhsyHL0Srz6WuBbLecjLURtq0w3PYtftDDmaNyhww-2B7TRbl-2B4yRx-2B2hOR4CPRKPrZhj7GVtx9JErSNpKFQQeV6sTjiMVBIXeA322vbdirGisVHuOFeSuj1JVrDxr3eWiSM1pbqsiIwDdujTLtyfw8i4W-2B3pMKdS8sXqU0TIJu9vFNBb5VVhtW0Y-2FH-2Fb84MHOC-2BtifcbdRG9RXKa9GxhJWuzSw8ZbecHq0ZubyA-2B48BCD7-2FCVHVVD0ce6A-2BKoQNwRRdA-2FTMolNruH9j-2Fj2nb-2FbcaybPmY-2FMcPH5NU5pXlTaWDn4vCHnRddfHkXfoeA-2Fsm7AsXMR8Kh4ySSj7po9U9-2BHnyTQ0X-2Bu4l3IjGa6vx81HtWVP8mEaB6OS-2BNEOvt3TZMGBpOF9TUXLUBYcf41swRamIzqUrm1h6sk-2FR6pWFd9Q6UGKI2zIWbiw6tYe-2BjEWZ0fjxY3zJFkzUouTtuM4";
+const STORE_URL = "https://teslimdigital.shop";
 
 const contactItems = [
   {
@@ -10,20 +10,20 @@ const contactItems = [
     label: "Email",
     value: "tesdistro@gmail.com",
     subtitle: "Reply within 24 hours",
-    href: "mailto:hello@prozone-digital.com",
+    href: "mailto:tesdistro@gmail.com",
   },
   {
     icon: "📱",
     label: "WhatsApp",
-    value: "+234 800 000 0000",
-    subtitle: "Available 9am – 6pm WAT",
-    href: "https://wa.me/2348000000000",
+    value: "+19852887616",
+    subtitle: "Available Mondays - Fridays",
+    href: "https://wa.me/19852887616",
   },
   {
     icon: "📍",
     label: "Location",
-    value: "Mauritius",
-    subtitle: "Remote / Nationwide delivery",
+    value: "United States",
+    subtitle: "Remote · Worldwide delivery",
     href: null,
   },
 ];
@@ -43,7 +43,6 @@ const socialLinks = [
   },
 ];
 
-// ── Component ─────────────────────────────────────────────────────────────────
 function LetsTalk() {
   return (
     <section id="contact" className="py-36">
@@ -53,101 +52,147 @@ function LetsTalk() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative overflow-hidden grid lg:grid-cols-2 gap-8"
+          className="relative grid gap-8 overflow-hidden lg:grid-cols-2"
         >
-          {/* Wallpaper text — lives on the shared grid container (not inside
-              either card) so it runs behind both "Get in touch" and "Ready
-              to start your project" as one continuous watermark. Each card
-              below gets position + z-10 so its own translucent background
-              paints above this layer and the text shows through faintly
-              instead of being covered — or, without the z-10, painting on
-              TOP of the card content, since positioned elements paint above
-              static in-flow content by default regardless of DOM order. */}
+          {/* Background watermark */}
           <div
-            className="absolute inset-0 flex items-center justify-center pointer-events-none select-none overflow-hidden"
+            className="pointer-events-none absolute inset-0 flex select-none items-center justify-center overflow-hidden"
             aria-hidden="true"
           >
-            <span className="text-[140px] md:text-[220px] lg:text-[260px] font-black tracking-tight text-slate-900 opacity-[0.04] leading-none whitespace-nowrap">
+            <span className="whitespace-nowrap text-[140px] font-black leading-none tracking-tight text-slate-900 opacity-[0.07] md:text-[220px] lg:text-[260px]">
               CONTACT
             </span>
           </div>
 
-          {/* ── Left column: contact info ── */}
-          <div className="relative z-10 rounded-[40px] glass-card p-10 md:p-12">
-            {/* Foreground */}
-            <div>
-              <p className="uppercase tracking-[0.2em] text-sm text-teal-600 mb-5">
-                Available for new projects
-              </p>
+          {/* Left Card */}
+          <div className="glass-card relative z-10 rounded-[40px] p-10 md:p-12">
+            <p className="mb-5 text-sm uppercase tracking-[0.2em] text-teal-600">
+              Available for new projects
+            </p>
 
-              <h2 className="text-3xl md:text-4xl font-semibold text-slate-900 mb-4">
-                Get in touch
-              </h2>
+            <h2 className="mb-4 text-3xl font-semibold text-slate-900 md:text-4xl">
+              Get in touch
+            </h2>
 
-              <p className="text-lg text-slate-600 mb-10 leading-relaxed max-w-md">
-                Currently taking on freelance and consultancy work. Reach out —
-                I'd love to hear about what you're building.
-              </p>
+            <p className="mb-10 max-w-md text-lg leading-relaxed text-slate-600">
+              Whether you're planning a new website, exploring AI and
+              automation, or looking to improve existing business systems, I'd
+              be happy to learn about your goals and discuss how Teslim Digital
+              can help.
+            </p>
 
-              {/* Contact items */}
-              <ul className="space-y-5 mb-10">
-                {contactItems.map((item) => (
-                  <li key={item.label} className="flex items-start gap-4">
-                    <span className="text-2xl mt-0.5" aria-hidden="true">
-                      {item.icon}
-                    </span>
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-0.5">
-                        {item.label}
-                      </p>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          target={item.href.startsWith("http") ? "_blank" : undefined}
-                          rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="text-slate-800 font-medium hover:text-teal-600 transition-colors duration-200"
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <p className="text-slate-800 font-medium">{item.value}</p>
-                      )}
-                      <p className="text-sm text-slate-500 mt-0.5">{item.subtitle}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+            <div className="mb-10 grid gap-8 lg:grid-cols-[1fr_330px]">
 
-              {/* Social links */}
-              <div className="flex flex-wrap gap-3">
-                {socialLinks.map((link) => (
-                  <a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="rounded-xl border border-slate-200 px-5 py-3 text-sm font-medium text-slate-700 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-300 hover:-translate-y-1"
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
+  {/* LEFT SIDE */}
+  <div className="space-y-6">
+
+    {contactItems.slice(0, 2).map((item) => (
+      <div key={item.label} className="flex items-start gap-4">
+
+        <span className="mt-0.5 text-2xl" aria-hidden="true">
+          {item.icon}
+        </span>
+
+        <div>
+          <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
+            {item.label}
+          </p>
+
+          <a
+            href={item.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-medium text-slate-800 transition-colors duration-200 hover:text-teal-600"
+          >
+            {item.value}
+          </a>
+
+          <p className="mt-1 text-sm text-slate-500">
+            {item.subtitle}
+          </p>
+
+        </div>
+
+      </div>
+    ))}
+
+    {/* LOCATION */}
+
+    <div className="flex items-start gap-4">
+
+      <span className="mt-0.5 text-2xl">
+        📍
+      </span>
+
+      <div>
+
+        <p className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
+          Location
+        </p>
+
+        <p className="font-medium text-slate-800">
+          United States
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  {/* STORE PANEL */}
+
+  <div className="flex flex-col justify-start">
+
+    <a
+      href={STORE_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-teal-300 px-7 py-5 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-teal-300 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+    >
+      🛍️ Visit Store
+      <span aria-hidden="true">↗</span>
+    </a>
+
+    <p className="mt-6 text-sm leading-relaxed text-slate-600">
+       Nationwide delivery · Worldwide delivery soon
+    </p>
+
+    <p className="mt-2 max-w-xs text-xs leading-relaxed text-slate-400">
+      Opens my Store in a new tab.
+    </p>
+
+  </div>
+
+</div>
+
+            <div className="flex flex-wrap gap-3">
+              {socialLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-2xl border border-slate-200 px-8 py-5 text-base font-medium text-slate-700 transition-all duration-300 hover:-translate-y-1 hover:border-slate-900 hover:bg-slate-900 hover:text-white"
+                >
+                  {link.label}
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* ── Right column: availability card ── */}
+          {/* Right Card */}
           <motion.div
             initial={{ opacity: 0, y: 35 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="relative z-10 glass-card rounded-[40px] p-10 md:p-12 flex flex-col justify-between gap-10"
+            className="glass-card relative z-10 flex flex-col justify-between gap-10 rounded-[40px] p-10 md:p-12"
           >
-            {/* Status */}
             <div>
-              <div className="flex items-center gap-3 mb-6">
+              <div className="mb-6 flex items-center gap-3">
                 <span
-                  className="w-4 h-4 rounded-full bg-green-400 animate-pulse"
+                  className="h-4 w-4 animate-pulse rounded-full bg-green-400"
                   aria-hidden="true"
                 />
                 <span className="text-sm font-medium text-green-600">
@@ -155,31 +200,30 @@ function LetsTalk() {
                 </span>
               </div>
 
-              <h3 className="text-2xl md:text-3xl font-semibold text-slate-900 mb-3">
-                Ready to start your project
+              <h3 className="mb-3 text-2xl font-semibold text-slate-900 md:text-3xl">
+                Ready to start your project?
               </h3>
 
-              <p className="text-slate-500 text-base leading-relaxed">
-                Response time within 24 hours. No commitment required for the
-                first call.
+              <p className="text-base leading-relaxed text-slate-500">
+                Every project starts with a conversation. We'll discuss your
+                business, your objectives, and the most practical path forward—
+                with no obligation and no pressure.
               </p>
             </div>
 
-            {/* CTA */}
             <div>
-              {/* Swapped out the mailto: link for the BOOKING_URL variable */}
               <a
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center gap-3 w-full rounded-xl bg-teal-600 py-5 font-semibold text-white transition-all duration-300 hover:bg-teal-700 hover:-translate-y-1"
+                className="flex w-full items-center justify-center gap-3 rounded-2xl bg-teal-600 py-5 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
               >
                 Book a discovery call
                 <span aria-hidden="true">→</span>
               </a>
 
-              <p className="text-center text-sm text-slate-400 mt-4">
-                Free 30-minute session · No obligation
+              <p className="mt-4 text-center text-sm text-slate-400">
+                Free 20-minute session · No obligation
               </p>
             </div>
           </motion.div>

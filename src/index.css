@@ -4,6 +4,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Prevent sticky navbar from covering section headings */
+#about,
+#services,
+#work,
+#contact {
+  scroll-margin-top: 96px;
+}
+
 :root {
   --bg: #FFF4EC;
   --primary: #14B8A6;

@@ -1,6 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
-
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -15,48 +13,44 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className="sticky top-0 z-50 w-full border-b border-white/30 bg-white/85 backdrop-blur-xl shadow-sm">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <Link
-            to="/"
-            className="text-xl font-bold text-gray-900"
+      <nav className="sticky top-0 z-50 w-full border-b border-white/40 bg-white/80 backdrop-blur-2xl shadow-md transition-all duration-300">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
+
+          {/* Logo */}
+          <a
+            href="/"
+            className="text-xl font-bold text-gray-900 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 rounded-md"
             aria-label="Homepage"
           >
-            Teslim Yussuph
-          </Link>
-          {/* Desktop */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) =>
-              link.href.startsWith("/") ? (
-                <Link
-                  key={link.label}
-                  to={link.href}
-                  className="text-gray-700 hover:text-teal-600 transition"
-                >
-                  {link.label}
-                </Link>
-            ) : (
+            Teslim
+          </a>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-10">
+            {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-gray-700 hover:text-teal-600 transition"
+                className="rounded-lg px-3 py-2 text-gray-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
               >
                 {link.label}
               </a>
-            )
-          )}
+            ))}
+
             <a
               href="#contact"
-              className="rounded-full bg-teal-500 px-8 py-4 text-white font-semibold shadow-xl transition duration-300 hover:scale-105 hover:shadow-2xl"
+              className="rounded-full bg-teal-500 px-7 py-3 text-white font-semibold shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
             >
               Book Call
             </a>
           </div>
 
-          {/* Mobile */}
+          {/* Mobile Menu Button */}
           <button
+            type="button"
             aria-label="Toggle navigation menu"
-            className="md:hidden flex flex-col gap-1"
+            aria-expanded={open}
+            className="flex flex-col gap-1 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 rounded-md p-1"
             onClick={() => setOpen(!open)}
           >
             <span className="h-0.5 w-6 bg-black"></span>
@@ -72,32 +66,25 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -24 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -24 }}
-            className="fixed top-24 left-1/2 z-40 w-[92%] -translate-x-1/2 rounded-3xl border border-white/40 bg-white/80 p-6 backdrop-blur-xl shadow-2xl md:hidden"
+            transition={{ duration: 0.25 }}
+            className="fixed top-24 left-1/2 z-40 w-[92%] -translate-x-1/2 rounded-3xl border border-white/40 bg-white/85 p-8 backdrop-blur-2xl shadow-2xl md:hidden"
           >
-            <div className="flex flex-col gap-5">
-              {navLinks.map((link) =>
-              link.href.startsWith("/") ? (
-                <Link
+            <div className="flex flex-col gap-6">
+              {navLinks.map((link) => (
+                <a
                   key={link.label}
-                  to={link.href}
-                  className="text-gray-700 hover:text-teal-600 transition"
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-lg px-3 py-2 text-gray-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
                 >
                   {link.label}
-                </Link>
-            ) : (
-              <a
-                key={link.label}
-                href={link.href}
-                className="text-gray-700 hover:text-teal-600 transition"
-              >
-                {link.label}
-              </a>
-            )
-          )}
+                </a>
+              ))}
+
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-teal-500 px-6 py-4 text-white font-semibold shadow-xl text-center"
+                className="rounded-full bg-teal-500 px-7 py-3 text-center font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
               >
                 Book Call
               </a>

@@ -1,27 +1,26 @@
 import { motion } from "framer-motion";
 
-// ── Data ──────────────────────────────────────────────────────────────────────
-// Add or remove services here — the grid reflows automatically.
+// ── Services Data ─────────────────────────────────────────────────────────────
 const services = [
   {
-    title: "Front-end Development",
+    title: "Strategic Websites",
     description:
-      "Precisely rendered and responsive interfaces built with modern web standards for speed, accessibility, and long-term maintenance.",
+      "Modern, responsive websites built to establish credibility, communicate your value, and convert visitors into customers. Every website is designed around your business goals—not just aesthetics.",
   },
   {
-    title: "Project Management",
+    title: "Intelligent Systems",
     description:
-      "Timely delivery of digital projects, on budget and aligned with business goals, using agile or waterfall workflows.",
+      "Custom digital systems that simplify operations, improve efficiency, and support better decision-making. From internal tools to business workflows, every solution is built for long-term scalability.",
   },
   {
-    title: "Digital Marketing",
+    title: "AI & Automation",
     description:
-      "Data-driven campaigns using analytics, SEO, content strategy, and paid ads to generate leads and improve conversions.",
+      "Automate repetitive tasks, streamline processes, and leverage AI to help your business operate smarter. The focus is on saving time, reducing manual work, and increasing productivity.",
   },
   {
-    title: "Consultancy",
+    title: "Technology Strategy",
     description:
-      "Guidance for startups and growing businesses. Helping you leverage smart technologies and make sound, growth-based decisions.",
+      "Technology guidance that helps businesses make informed decisions, prioritize the right solutions, and build a roadmap for sustainable digital growth with confidence.",
   },
 ];
 
@@ -30,37 +29,56 @@ function Services() {
   return (
     <section id="services" className="py-36">
       <div className="section">
-        <p className="uppercase tracking-[0.2em] text-sm text-teal-600 mb-6">
-          Services
-        </p>
 
-        <h2 className="text-4xl md:text-5xl font-semibold mb-14 text-slate-900">
-          Services tailored to grow your business
-        </h2>
+        {/* Section Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="max-w-3xl"
+        >
+          <p className="mb-6 text-sm uppercase tracking-[0.2em] text-teal-600">
+            Services
+          </p>
 
-        {/*
-          BUG FIX: original used md:grid-cols-3 for 4 items — one card
-          was always orphaned alone in the last row on mid-size screens.
-          md:grid-cols-2 gives a clean 2×2 layout; lg:grid-cols-4 allows
-          a single-row display on wide screens if ever needed.
-        */}
-        <div className="grid md:grid-cols-2 gap-6">
+          <h2 className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
+            Technology services built to help your business grow smarter.
+          </h2>
+
+          <p className="mt-6 text-lg leading-relaxed text-slate-600">
+            Every business has unique challenges and opportunities. That's why
+            I focus on practical technology solutions tailored to your goals.
+            Whether you're building your online presence, improving operations,
+            or preparing for future growth, every service is designed to create
+            measurable business value.
+          </p>
+        </motion.div>
+
+        {/* Services Grid */}
+        <div className="mt-14 grid gap-6 md:grid-cols-2">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.12, duration: 0.5 }}
-              className="glass-card rounded-[28px] p-8 md:p-10 min-h-[240px] transition duration-300 hover:-translate-y-2 hover:shadow-2xl"
+              transition={{
+                delay: index * 0.12,
+                duration: 0.5,
+              }}
+              className="glass-card min-h-[250px] rounded-[28px] p-10 transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
             >
-              <div className="w-12 h-1 rounded-full bg-teal-500 mb-5" aria-hidden="true" />
+              <div
+                className="mb-6 h-1 w-12 rounded-full bg-teal-500"
+                aria-hidden="true"
+              />
 
-              <h3 className="text-xl font-semibold mb-4 text-slate-900">
+              <h3 className="mb-4 text-xl font-semibold text-slate-900">
                 {service.title}
               </h3>
 
-              <p className="text-slate-600 leading-relaxed text-base md:text-lg">
+              <p className="text-base leading-relaxed text-slate-600 md:text-lg">
                 {service.description}
               </p>
             </motion.div>

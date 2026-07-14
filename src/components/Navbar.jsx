@@ -69,7 +69,7 @@ export default function Navbar() {
             aria-expanded={open}
             aria-controls="mobile-navigation"
             className="flex flex-col gap-1 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 rounded-md p-2"
-            onClick={() => setOpen(!open)}
+            onClick={() => setOpen((prev) => !prev)}
           >
             <span className="h-0.5 w-6 bg-black"></span>
             <span className="h-0.5 w-6 bg-black"></span>
@@ -86,7 +86,10 @@ export default function Navbar() {
             initial={{ opacity: 0, y: -24 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -24 }}
-            transition={{ duration: 0.25 }}
+            transition={{ 
+              duration: 0.3,
+              ease: "easeOut",
+            }}
             className="fixed top-24 left-1/2 z-40 w-[92%] -translate-x-1/2 rounded-3xl border border-white/40 bg-white/85 p-8 backdrop-blur-2xl shadow-2xl md:hidden"
           >
             <div className="flex flex-col gap-6">

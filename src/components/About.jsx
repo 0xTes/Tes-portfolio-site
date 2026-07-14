@@ -1,13 +1,21 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 function About() {
+  const shouldReduceMotion = useReducedMotion();
   return (
-    <section id="about" className="py-36">
+    <section 
+        id="about" 
+        aria-labelledby="about-heading" 
+        className="py-36">
       <div className="section grid items-center gap-20 lg:grid-cols-2">
 
         {/* Left: Section Heading */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
+          initial={
+            shouldReduceMotion
+              ? { opacity: 0 }
+              : { opacity: 0, x: -40 }
+          }
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
@@ -16,14 +24,20 @@ function About() {
             About
           </p>
 
-          <h2 className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
+          <h2 
+            id="about-heading"
+            className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
             Building technology that works for your business—not the other way around.
           </h2>
         </motion.div>
 
         {/* Right: About Card */}
         <motion.div
-          initial={{ opacity: 0, x: 40 }}
+          initial={
+            shouldReduceMotion
+              ? { opacity: 0 }
+              : { opacity: 0, x: 40 }
+          }
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}

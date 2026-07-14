@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 import seventeeImage from "../assets/projects/seventee-hotel.png";
 import economicalImage from "../assets/projects/economical-solutions.png";
@@ -33,14 +33,17 @@ const projects = [
 ];
 
 function Work() {
+  const shouldReduceMotion = useReducedMotion();
   return (
-    <section id="work" className="py-36">
+    <section id="work" className="py-36" aria-labelledby="work-heading">
       <div className="section">
         <p className="mb-6 text-sm uppercase tracking-[0.2em] text-teal-600">
           Selected Work
         </p>
 
-        <h2 className="max-w-3xl mb-6 text-4xl font-semibold text-slate-900 md:text-5xl">
+        <h2 
+          id="work-heading"
+          className="max-w-3xl mb-6 text-4xl font-semibold text-slate-900 md:text-5xl">
           Projects that solved real business problems
         </h2>
 
@@ -60,16 +63,24 @@ function Work() {
             return (
               <motion.div
                 key={project.title}
-                initial={{ opacity: 0, y: 35 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={
+                  shouldReduceMotion
+                    ? { opacity: 1 }
+                    : { opacity: 0, y: 35 }
+                }
+                whileInView={
+                  shouldReduceMotion
+                    ? { opacity: 1 }
+                    : { opacity: 1, y: 0 }
+                }
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.12 }}
-                className="group relative min-h-[420px] overflow-hidden rounded-[30px] shadow-xl"
+                className="group relative min-h-[420px] overflow-hidden rounded-[30px] shadow-xl focus-within:ring-2 focus-within:ring-teal-500"
               >
                 {/* Background image */}
                 <img
                   src={project.image}
-                  alt={project.title}
+                  alt={`Screenshot of ${project.title}`}
                   className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
                   style={blurPx ? { filter: `blur(${blurPx}px)` } : undefined}
                 />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -11,9 +11,26 @@ const navLinks = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
+  useEffect(() => {
+    const handleEscape = (event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleEscape);
+
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, []);
+
   return (
     <>
-      <nav className="sticky top-0 z-50 w-full border-b border-white/40 bg-white/80 backdrop-blur-2xl shadow-md transition-all duration-300">
+      <nav
+        aria-label="Primary navigation"
+        className="sticky top-0 z-50 w-full border-b border-white/40 bg-white/80 backdrop-blur-2xl shadow-md transition-all duration-300"
+      >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
 
           {/* Logo */}
@@ -50,7 +67,8 @@ export default function Navbar() {
             type="button"
             aria-label="Toggle navigation menu"
             aria-expanded={open}
-            className="flex flex-col gap-1 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 rounded-md p-1"
+            aria-controls="mobile-navigation"
+            className="flex flex-col gap-1 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 rounded-md p-2"
             onClick={() => setOpen(!open)}
           >
             <span className="h-0.5 w-6 bg-black"></span>
@@ -62,7 +80,9 @@ export default function Navbar() {
 
       <AnimatePresence>
         {open && (
-          <motion.div
+          <motion.nav
+            id="mobile-navigation"
+            aria-label="Mobile navigation"
             initial={{ opacity: 0, y: -24 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -24 }}
@@ -89,7 +109,7 @@ export default function Navbar() {
                 Book Call
               </a>
             </div>
-          </motion.div>
+          </motion.nav>
         )}
       </AnimatePresence>
     </>

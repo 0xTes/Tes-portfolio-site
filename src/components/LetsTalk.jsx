@@ -223,7 +223,7 @@ function LetsTalk() {
               </a>
 
               <p className="mt-4 text-center text-sm text-slate-400">
-                Free 20-minute session · No obligation
+                Free 30-minute session · No obligation
               </p>
             </div>
           </motion.div>

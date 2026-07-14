@@ -1,12 +1,12 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 function Hero() {
-  const scrollTo = (id) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-  };
+  const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section className="hero-gradient flex min-h-screen items-center pt-20 pb-32">
+    <section 
+      aria-labelledby="hero-heading"
+      className="hero-gradient flex min-h-screen items-center pt-20 pb-32">
       <div className="section grid items-center gap-16 lg:grid-cols-2">
 
         {/* Left: Hero Copy */}
@@ -19,7 +19,9 @@ function Hero() {
             AI &amp; Automation • Systems • Websites
           </p>
 
-          <h1 className="text-4xl font-semibold leading-tight text-slate-900 md:text-6xl lg:text-7xl">
+          <h1 
+            id="hero-heading"
+            className="text-4xl font-semibold leading-tight text-slate-900 md:text-6xl lg:text-7xl">
             Helping businesses grow through strategic websites, intelligent systems, and digital transformation.
           </h1>
 
@@ -30,31 +32,41 @@ function Hero() {
           </p>
 
           <div className="mt-12 flex flex-wrap gap-4">
-            <button
-              onClick={() => scrollTo("contact")}
+            <a
+              href="#contact"
+              aria-label="Book a strategy call"
               className="rounded-full bg-teal-500 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
             >
               Book a Strategy Call
-            </button>
+            </a>
 
-            <button
-              onClick={() => scrollTo("work")}
+            <a
+              href="#work"
+              aria-label="View selected projects"
               className="rounded-full border border-slate-300 bg-white px-8 py-4 font-semibold shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-400 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
             >
               View Work
-            </button>
+            </a>
           </div>
         </motion.div>
 
         {/* Right: Portrait */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: [0, -8, 0] }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
+          animate={
+            shouldReduceMotion
+              ? { opacity: 1, y: 0 }
+              : { opacity: 1, y: [0, -8, 0] }
+          }
+            transition={
+            shouldReduceMotion
+              ? { duration: 0.7 }
+              : {
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }
+            }
           className="relative flex h-[420px] items-center justify-center sm:h-[500px]"
         >
           <div
@@ -71,7 +83,7 @@ function Hero() {
             <div className="h-[320px] overflow-hidden rounded-[28px] sm:h-[420px]">
               <img
                 src="/hero-photo.jpg"
-                alt="Portrait of Teslim Yussuph"
+                alt="Portrait of Teslim Yussuph, founder of Teslim Digital"
                 className="h-full w-full object-cover transition duration-700 hover:scale-110"
                 loading="eager"
                 decoding="async"

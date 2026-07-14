@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 // ── Services Data ─────────────────────────────────────────────────────────────
 const services = [
@@ -26,13 +26,22 @@ const services = [
 
 // ── Component ─────────────────────────────────────────────────────────────────
 function Services() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <section id="services" className="py-36">
+    <section 
+        id="services" 
+        aria-labelledby="services-heading"
+        className="py-36">
       <div className="section">
 
         {/* Section Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={
+            shouldReduceMotion
+              ? { opacity: 0 }
+              : { opacity: 0, y: 30 }
+          }
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
@@ -42,7 +51,9 @@ function Services() {
             Services
           </p>
 
-          <h2 className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
+          <h2 
+            id="services-heading"
+            className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
             Technology services built to help your business grow smarter.
           </h2>
 
@@ -60,7 +71,11 @@ function Services() {
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={
+                shouldReduceMotion
+                  ? { opacity: 0 }
+                  : { opacity: 0, y: 30 }
+              }
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -10,6 +10,7 @@ const navLinks = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const shouldReduceMotion = useReducedMotion();
 
   useEffect(() => {
     const handleEscape = (event) => {
@@ -32,18 +33,17 @@ export default function Navbar() {
         className="sticky top-0 z-50 w-full border-b border-white/40 bg-white/80 backdrop-blur-2xl shadow-md transition-all duration-300"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
-
           {/* Logo */}
           <a
             href="/"
-            className="text-xl font-bold text-gray-900 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 rounded-md"
+            className="rounded-md text-xl font-bold text-gray-900 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
             aria-label="Homepage"
           >
             Teslim
           </a>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden items-center gap-10 md:flex">
             {navLinks.map((link) => (
               <a
                 key={link.label}
@@ -56,7 +56,7 @@ export default function Navbar() {
 
             <a
               href="#contact"
-              className="rounded-full bg-teal-500 px-7 py-3 text-white font-semibold shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+              className="rounded-full bg-teal-500 px-7 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               Book Call
             </a>
@@ -68,7 +68,7 @@ export default function Navbar() {
             aria-label="Toggle navigation menu"
             aria-expanded={open}
             aria-controls="mobile-navigation"
-            className="flex flex-col gap-1 md:hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 rounded-md p-2"
+            className="flex flex-col gap-1 rounded-md p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 md:hidden"
             onClick={() => setOpen((prev) => !prev)}
           >
             <span className="h-0.5 w-6 bg-black"></span>
@@ -83,14 +83,26 @@ export default function Navbar() {
           <motion.nav
             id="mobile-navigation"
             aria-label="Mobile navigation"
-            initial={{ opacity: 0, y: -24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -24 }}
-            transition={{ 
+            initial={
+              shouldReduceMotion
+                ? { opacity: 0 }
+                : { opacity: 0, y: -24 }
+            }
+            animate={
+              shouldReduceMotion
+                ? { opacity: 1 }
+                : { opacity: 1, y: 0 }
+            }
+            exit={
+              shouldReduceMotion
+                ? { opacity: 0 }
+                : { opacity: 0, y: -24 }
+            }
+            transition={{
               duration: 0.3,
               ease: "easeOut",
             }}
-            className="fixed top-24 left-1/2 z-40 w-[92%] -translate-x-1/2 rounded-3xl border border-white/40 bg-white/85 p-8 backdrop-blur-2xl shadow-2xl md:hidden"
+            className="fixed top-24 left-1/2 z-40 w-[92%] -translate-x-1/2 rounded-3xl border border-white/40 bg-white/85 p-8 shadow-2xl backdrop-blur-2xl md:hidden"
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
@@ -107,7 +119,7 @@ export default function Navbar() {
               <a
                 href="#contact"
                 onClick={() => setOpen(false)}
-                className="rounded-full bg-teal-500 px-7 py-3 text-center font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+                className="rounded-full bg-teal-500 px-7 py-3 text-center font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 Book Call
               </a>

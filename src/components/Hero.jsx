@@ -7,11 +7,15 @@ function Hero() {
     <section 
       aria-labelledby="hero-heading"
       className="hero-gradient flex min-h-screen items-center pt-20 pb-32">
+      
       <div className="section grid items-center gap-16 lg:grid-cols-2">
-
         {/* Left: Hero Copy */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={
+            shouldReduceMotion
+              ? { opacity: 0 }
+              : { opacity: 0, y: 40 }
+          }
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
@@ -35,7 +39,7 @@ function Hero() {
             <a
               href="#contact"
               aria-label="Book a strategy call"
-              className="rounded-full bg-teal-500 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+              className="rounded-full bg-teal-500 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               Book a Strategy Call
             </a>
@@ -43,7 +47,7 @@ function Hero() {
             <a
               href="#work"
               aria-label="View selected projects"
-              className="rounded-full border border-slate-300 bg-white px-8 py-4 font-semibold shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-400 hover:shadow-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2"
+              className="rounded-full bg-teal-500 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               View Work
             </a>
@@ -52,10 +56,14 @@ function Hero() {
 
         {/* Right: Portrait */}
         <motion.div
-          initial={{ opacity: 0, y: 40 }}
+          initial={
+            shouldReduceMotion
+              ? { opacity: 0 }
+              : { opacity: 0, y: 40 }
+          }
           animate={
             shouldReduceMotion
-              ? { opacity: 1, y: 0 }
+              ? { opacity: 1 }
               : { opacity: 1, y: [0, -8, 0] }
           }
             transition={

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 
 // ── Configuration ─────────────────────────────────────────────────────────────
 const BOOKING_URL = "https://ablink.send.calendly.com/ls/click?upn=u001.-2FpFZHOmNsCfytAyhc9roxA5LD773niqqD0IJajnN0YWAh4u17NoxhQF3waIyR-2BsCGwZnLuUZCd0bVghPIsvJVm1IDhUtcLmBVWcPM9XzrZLFjMLbB-2FyvrSBKOVhRMAJejcXqGpW8oXU9CEXUwfSS-2FE-2Bf-2BxWJbk3eSG0H7tiOc-2FotmpWjNa7svGw-2Fx-2BXLRxDzeWHN-2FZyaCj9XItenIQkVNQ-3D-3D9XMA_H-2Ba2icJftUiQ5Ai7F-2F6vIehEFbxvzbeRV7-2BVmqbxcRZspqc7IGqgawvffq4y4ee6u7CeqJ-2FhkXVFXyMINd0pZsDB5-2FPaX0Pm1JvFS9hm-2FWJNOtzDzSF8h6vt7yeTRPOawpI1a60zbVJ2-2BkhNW5mqN8dB67G1VCPDXZ8pblxG4VI-2FazVdkWVmKP7i3i7pTc9iPqd3pfDBjkpYFEQZfndwpXFjvNq5g5-2BD-2B-2FwJGOA1Gl1q1PAqxwQzH2PNGiBjcJfTyhR-2BqRudmWbTaEnqWCGBeuA7XOZQGZQrI2a4ngzTf53U6bhsyHL0Srz6WuBbLecjLURtq0w3PYtftDDmaNyhww-2B7TRbl-2B4yRx-2B2hOR4CPRKPrZhj7GVtx9JErSNpKFQQeV6sTjiMVBIXeA322vbdirGisVHuOFeSuj1JVrDxr3eWiSM1pbqsiIwDdujTLtyfw8i4W-2B3pMKdS8sXqU0TIJu9vFNBb5VVhtW0Y-2FH-2Fb84MHOC-2BtifcbdRG9RXKa9GxhJWuzSw8ZbecHq0ZubyA-2B48BCD7-2FCVHVVD0ce6A-2BKoQNwRRdA-2FTMolNruH9j-2Fj2nb-2FbcaybPmY-2FMcPH5NU5pXlTaWDn4vCHnRddfHkXfoeA-2Fsm7AsXMR8Kh4ySSj7po9U9-2BHnyTQ0X-2Bu4l3IjGa6vx81HtWVP8mEaB6OS-2BNEOvt3TZMGBpOF9TUXLUBYcf41swRamIzqUrm1h6sk-2FR6pWFd9Q6UGKI2zIWbiw6tYe-2BjEWZ0fjxY3zJFkzUouTtuM4";
@@ -44,14 +44,24 @@ const socialLinks = [
 ];
 
 function LetsTalk() {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
     <section id="contact" className="py-36">
       <div className="section">
         <motion.div
-          initial={{ opacity: 0, y: 35 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          initial={
+            shouldReduceMotion
+              ? { opacity: 0 }
+              : { opacity: 0, y: 35 }
+          }
+          whileInView={
+            shouldReduceMotion
+              ? { opacity: 1 }
+              : { opacity: 1, y: 0 }
+          }
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
           className="relative grid gap-8 overflow-hidden lg:grid-cols-2"
         >
           {/* Background watermark */}
@@ -102,7 +112,7 @@ function LetsTalk() {
             href={item.href}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-slate-800 transition-colors duration-200 hover:text-teal-600"
+            className="rounded-sm font-medium text-slate-800 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
           >
             {item.value}
           </a>
@@ -148,7 +158,7 @@ function LetsTalk() {
       href={STORE_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-teal-300 px-7 py-5 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-1 hover:bg-teal-300 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+      className="inline-flex w-full items-center justify-center gap-3 rounded-full bg-teal-300 px-7 py-5 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-400 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
     >
       🛍️ Visit Store
       <span aria-hidden="true">↗</span>
@@ -173,7 +183,7 @@ function LetsTalk() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="rounded-2xl border border-slate-200 px-8 py-5 text-base font-medium text-slate-700 transition-all duration-300 hover:-translate-y-1 hover:border-slate-900 hover:bg-slate-900 hover:text-white"
+                  className="rounded-2xl border border-slate-200 px-8 py-5 text-base font-medium text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-900 hover:bg-slate-900 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                 >
                   {link.label}
                 </a>
@@ -182,17 +192,11 @@ function LetsTalk() {
           </div>
 
           {/* Right Card */}
-          <motion.div
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
-            className="glass-card relative z-10 flex flex-col justify-between gap-10 rounded-[40px] p-10 md:p-12"
-          >
+          <div className="glass-card relative z-10 flex flex-col justify-between gap-10 rounded-[40px] p-10 md:p-12">
             <div>
               <div className="mb-6 flex items-center gap-3">
                 <span
-                  className="h-4 w-4 animate-pulse rounded-full bg-green-400"
+                  className="h-4 w-4 motion-safe:animate-pulse rounded-full bg-green-400"
                   aria-hidden="true"
                 />
                 <span className="text-sm font-medium text-green-600">
@@ -216,7 +220,7 @@ function LetsTalk() {
                 href={BOOKING_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex w-full items-center justify-center gap-3 rounded-2xl bg-teal-600 py-5 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+                className="flex w-full items-center justify-center gap-3 rounded-2xl bg-teal-600 py-5 font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 Book a discovery call
                 <span aria-hidden="true">→</span>
@@ -226,7 +230,7 @@ function LetsTalk() {
                 Free 30-minute session · No obligation
               </p>
             </div>
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

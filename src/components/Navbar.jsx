@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 
 const navLinks = [
@@ -11,11 +11,18 @@ const navLinks = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
+  const menuButtonRef = useRef(null);
+
+  const closeMenu = () => {
+  setOpen(false);
+  menuButtonRef.current?.focus();
+};
 
   useEffect(() => {
     const handleEscape = (event) => {
       if (event.key === "Escape") {
         setOpen(false);
+        menuButtonRef.current?.focus();
       }
     };
 
@@ -25,6 +32,23 @@ export default function Navbar() {
       window.removeEventListener("keydown", handleEscape);
     };
   }, []);
+
+  useEffect(() => {
+  const mediaQuery = window.matchMedia("(min-width: 768px)");
+
+  const handleChange = (event) => {
+    if (event.matches) {
+      setOpen(false);
+      menuButtonRef.current?.focus();
+    }
+  };
+
+  mediaQuery.addEventListener("change", handleChange);
+
+  return () => {
+    mediaQuery.removeEventListener("change", handleChange);
+  };
+}, []);
 
   return (
     <>
@@ -64,8 +88,9 @@ export default function Navbar() {
 
           {/* Mobile Menu Button */}
           <button
+            ref={menuButtonRef}
             type="button"
-            aria-label="Toggle navigation menu"
+            aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
             aria-controls="mobile-navigation"
             className="flex flex-col gap-1 rounded-md p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 md:hidden"
@@ -109,7 +134,7 @@ export default function Navbar() {
                 <a
                   key={link.label}
                   href={link.href}
-                  onClick={() => setOpen(false)}
+                  onClick={closeMenu}
                   className="rounded-lg px-3 py-2 text-gray-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
                 >
                   {link.label}
@@ -118,7 +143,7 @@ export default function Navbar() {
 
               <a
                 href="#contact"
-                onClick={() => setOpen(false)}
+                onClick={closeMenu}
                 className="rounded-full bg-teal-500 px-7 py-3 text-center font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
               >
                 Book Call

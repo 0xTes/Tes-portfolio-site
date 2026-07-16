@@ -56,7 +56,7 @@ function About() {
             duration: 0.6,
             ease: "easeOut",
           }}
-          className="glass-card rounded-[32px] p-10 transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
+          className="glass-card rounded-[32px] p-10 transition duration-300 hover:-translate-y-1 hover:shadow-2xl motion-reduce:transition-none motion-reduce:hover:translate-y-0"
         >
           <p className="text-lg leading-relaxed text-slate-600">
             I believe technology should simplify operations, support growth,

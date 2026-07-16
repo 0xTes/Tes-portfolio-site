@@ -38,7 +38,6 @@ function Hero() {
           <div className="mt-12 flex flex-wrap gap-4">
             <a
               href="#contact"
-              aria-label="Book a strategy call"
               className="rounded-full bg-teal-500 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               Book a Strategy Call
@@ -46,7 +45,6 @@ function Hero() {
 
             <a
               href="#work"
-              aria-label="View selected projects"
               className="rounded-full bg-teal-500 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               View Work
@@ -92,7 +90,7 @@ function Hero() {
               <img
                 src="/hero-photo.jpg"
                 alt="Portrait of Teslim Yussuph, founder of Teslim Digital"
-                className="h-full w-full object-cover transition duration-700 hover:scale-110"
+                className="h-full w-full object-cover transition duration-700 hover:scale-110 motion-reduce:hover:scale-100 motion-reduce:transition-none"
                 loading="eager"
                 decoding="async"
               />

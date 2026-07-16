@@ -94,7 +94,7 @@ function Services() {
                 duration: 0.6,
                 ease: "easeOut",
               }}
-              className="glass-card min-h-[250px] rounded-[28px] p-10 transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
+              className="glass-card min-h-[250px] rounded-[28px] p-10 transition duration-300 hover:-translate-y-1 hover:shadow-2xl motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               <div
                 className="mb-6 h-1 w-12 rounded-full bg-teal-500"

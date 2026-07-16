@@ -90,7 +90,7 @@ function Work() {
                 <img
                   src={project.image}
                   alt={`Screenshot of ${project.title}`}
-                  className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110"
+                  className="absolute inset-0 h-full w-full object-cover transition duration-700 group-hover:scale-110 motion-reduce:transition-none motion-reduce:group-hover:scale-100"
                   style={blurPx ? { filter: `blur(${blurPx}px)` } : undefined}
                 />
 

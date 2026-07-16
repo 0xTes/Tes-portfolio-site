@@ -60,7 +60,7 @@ export default function Navbar() {
           {/* Logo */}
           <a
             href="/"
-            className="rounded-md text-xl font-bold text-gray-900 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+            className="rounded-md text-xl font-semibold text-gray-900 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
             aria-label="Homepage"
           >
             Teslim
@@ -96,9 +96,9 @@ export default function Navbar() {
             className="flex flex-col gap-1 rounded-md p-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 md:hidden"
             onClick={() => setOpen((prev) => !prev)}
           >
-            <span className="h-0.5 w-6 bg-black"></span>
-            <span className="h-0.5 w-6 bg-black"></span>
-            <span className="h-0.5 w-6 bg-black"></span>
+            <span className="h-0.5 w-6 bg-slate-900"></span>
+            <span className="h-0.5 w-6 bg-slate-900"></span>
+            <span className="h-0.5 w-6 bg-slate-900"></span>
           </button>
         </div>
       </nav>

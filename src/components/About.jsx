@@ -2,11 +2,13 @@ import { motion, useReducedMotion } from "framer-motion";
 
 function About() {
   const shouldReduceMotion = useReducedMotion();
+
   return (
-    <section 
-        id="about" 
-        aria-labelledby="about-heading" 
-        className="py-36">
+    <section
+      id="about"
+      aria-labelledby="about-heading"
+      className="py-36"
+    >
       <div className="section grid items-center gap-20 lg:grid-cols-2">
 
         {/* Left: Section Heading */}
@@ -17,16 +19,23 @@ function About() {
               : { opacity: 0, x: -40 }
           }
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          transition={{
+            duration: 0.6,
+            ease: "easeOut",
+          }}
         >
           <p className="mb-5 text-sm uppercase tracking-[0.2em] text-teal-600">
             About
           </p>
 
-          <h2 
+          <h2
             id="about-heading"
-            className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
+            className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl"
+          >
             Building technology that works for your business—not the other way around.
           </h2>
         </motion.div>
@@ -39,8 +48,14 @@ function About() {
               : { opacity: 0, x: 40 }
           }
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          transition={{
+            duration: 0.6,
+            ease: "easeOut",
+          }}
           className="glass-card rounded-[32px] p-10 transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
         >
           <p className="text-lg leading-relaxed text-slate-600">

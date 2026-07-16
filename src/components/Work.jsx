@@ -34,6 +34,7 @@ const projects = [
 
 function Work() {
   const shouldReduceMotion = useReducedMotion();
+
   return (
     <section id="work" className="py-36" aria-labelledby="work-heading">
       <div className="section">
@@ -41,9 +42,10 @@ function Work() {
           Selected Work
         </p>
 
-        <h2 
+        <h2
           id="work-heading"
-          className="max-w-3xl mb-6 text-4xl font-semibold text-slate-900 md:text-5xl">
+          className="mb-6 max-w-3xl text-4xl font-semibold text-slate-900 md:text-5xl"
+        >
           Projects that solved real business problems
         </h2>
 
@@ -73,8 +75,15 @@ function Work() {
                     ? { opacity: 1 }
                     : { opacity: 1, y: 0 }
                 }
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.12 }}
+                viewport={{
+                  once: true,
+                  amount: 0.2,
+                }}
+                transition={{
+                  delay: index * 0.12,
+                  duration: 0.6,
+                  ease: "easeOut",
+                }}
                 className="group relative min-h-[420px] overflow-hidden rounded-[30px] shadow-xl focus-within:ring-2 focus-within:ring-teal-500"
               >
                 {/* Background image */}

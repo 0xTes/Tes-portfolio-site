@@ -29,10 +29,11 @@ function Services() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section 
-        id="services" 
-        aria-labelledby="services-heading"
-        className="py-36">
+    <section
+      id="services"
+      aria-labelledby="services-heading"
+      className="py-36"
+    >
       <div className="section">
 
         {/* Section Heading */}
@@ -43,17 +44,24 @@ function Services() {
               : { opacity: 0, y: 30 }
           }
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{
+            once: true,
+            amount: 0.2,
+          }}
+          transition={{
+            duration: 0.6,
+            ease: "easeOut",
+          }}
           className="max-w-3xl"
         >
           <p className="mb-6 text-sm uppercase tracking-[0.2em] text-teal-600">
             Services
           </p>
 
-          <h2 
+          <h2
             id="services-heading"
-            className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl">
+            className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl"
+          >
             Technology services built to help your business grow smarter.
           </h2>
 
@@ -77,10 +85,14 @@ function Services() {
                   : { opacity: 0, y: 30 }
               }
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{
+                once: true,
+                amount: 0.2,
+              }}
               transition={{
                 delay: index * 0.12,
-                duration: 0.5,
+                duration: 0.6,
+                ease: "easeOut",
               }}
               className="glass-card min-h-[250px] rounded-[28px] p-10 transition duration-300 hover:-translate-y-1 hover:shadow-2xl"
             >

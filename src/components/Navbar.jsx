@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import logo from "../assets/branding/logo.svg";
 
 const navLinks = [
   { label: "About", href: "#about" },
@@ -57,14 +58,28 @@ export default function Navbar() {
         className="sticky top-0 z-50 w-full border-b border-white/40 bg-white/80 backdrop-blur-2xl shadow-md transition-all duration-300"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
-          {/* Logo */}
+          {/* Brand */}
+        <div className="flex items-center gap-4">
           <a
             href="/"
+            aria-label="Teslim Digital logo — return to homepage"
+            className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+          >
+          <img
+            src={logo}
+            alt="Teslim Digital"
+            className="h-10 w-auto"
+          />
+          </a>
+
+          <a
+            href="/"
+            aria-label="Teslim — return to homepage"
             className="rounded-md text-xl font-semibold text-gray-900 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
-            aria-label="Homepage"
           >
             Teslim
           </a>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden items-center gap-10 md:flex">

@@ -37,6 +37,11 @@ export default function Home() {
         <meta property="og:url" content="https://teslim.digital/" />
 
         <meta
+          property="og:image"
+          content="https://teslim.digital/og-image.png"
+        />
+
+        <meta
           name="twitter:card"
           content="summary_large_image"
         />
@@ -50,6 +55,11 @@ export default function Home() {
           name="twitter:description"
           content="Teslim Digital helps businesses grow through AI automation, intelligent systems, strategic websites, and digital transformation. We build scalable digital solutions that improve efficiency, visibility, and sustainable business growth."
         />
+
+        <meta
+          name="twitter:image"
+          content="https://teslim.digital/og-image.png"
+  />
       </Helmet>
       <a
         href="#main-content"

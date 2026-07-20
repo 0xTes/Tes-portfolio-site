@@ -19,17 +19,23 @@ html {
 }
 
 :root {
-  --bg: #FFF4EC;
-  --primary: #14B8A6;
-  --secondary: #10B981;
+  --bg: #fff4ec;
+  --primary: #14b8a6;
+  --secondary: #10b981;
   --text: #111827;
-  --muted: #6B7280;
+  --muted: #6b7280;
+}
+
+/* Global box-sizing reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 html,
@@ -59,12 +65,19 @@ button {
   font: inherit;
 }
 
-img {
+img,
+svg,
+video {
   max-width: 100%;
   display: block;
 }
 
-/* reusable utilities */
+/* Prevent long content from overflowing its grid or container */
+.break-anywhere {
+  overflow-wrap: anywhere;
+}
+
+/* Reusable utilities */
 .section {
   width: min(1280px, 92%);
   margin-inline: auto;
@@ -74,20 +87,28 @@ img {
   background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255,255,255,0.45);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   box-shadow:
-    0 10px 30px rgba(0,0,0,0.08);
+    0 10px 30px rgba(0, 0, 0, 0.08);
 }
 
 .hero-gradient {
   background:
-    radial-gradient(circle at top right, rgba(20,184,166,0.22), transparent 35%),
-    radial-gradient(circle at left center, rgba(16,185,129,0.18), transparent 30%);
+    radial-gradient(
+      circle at top right,
+      rgba(20, 184, 166, 0.22),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at left center,
+      rgba(16, 185, 129, 0.18),
+      transparent 30%
+    );
 }
 
 .hero-grid {
   background-image:
-    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
+    linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
 }

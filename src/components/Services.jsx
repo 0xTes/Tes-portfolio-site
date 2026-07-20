@@ -34,8 +34,7 @@ function Services() {
       aria-labelledby="services-heading"
       className="py-36"
     >
-      <div className="section">
-
+      <div className="section min-w-0">
         {/* Section Heading */}
         <motion.div
           initial={
@@ -52,7 +51,7 @@ function Services() {
             duration: 0.6,
             ease: "easeOut",
           }}
-          className="max-w-3xl"
+          className="min-w-0 max-w-3xl"
         >
           <p className="mb-6 text-sm uppercase tracking-[0.2em] text-teal-600">
             Services
@@ -60,12 +59,12 @@ function Services() {
 
           <h2
             id="services-heading"
-            className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl"
+            className="min-w-0 break-words text-4xl font-semibold leading-tight text-slate-900 md:text-5xl"
           >
             Technology services built to help your business grow smarter.
           </h2>
 
-          <p className="mt-6 text-lg leading-relaxed text-slate-600">
+          <p className="mt-6 min-w-0 break-words text-lg leading-relaxed text-slate-600">
             Every business has unique challenges and opportunities. That's why
             I focus on practical technology solutions tailored to your goals.
             Whether you're building your online presence, improving operations,
@@ -75,7 +74,7 @@ function Services() {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
+        <div className="mt-14 grid min-w-0 gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
@@ -94,18 +93,18 @@ function Services() {
                 duration: 0.6,
                 ease: "easeOut",
               }}
-              className="glass-card min-h-[250px] rounded-[28px] p-10 transition duration-300 hover:-translate-y-1 hover:shadow-2xl motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              className="glass-card min-w-0 min-h-[250px] rounded-[28px] p-10 transition duration-300 hover:-translate-y-1 hover:shadow-2xl motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               <div
                 className="mb-6 h-1 w-12 rounded-full bg-teal-500"
                 aria-hidden="true"
               />
 
-              <h3 className="mb-4 text-xl font-semibold text-slate-900">
+              <h3 className="mb-4 min-w-0 break-words text-xl font-semibold text-slate-900">
                 {service.title}
               </h3>
 
-              <p className="text-base leading-relaxed text-slate-600 md:text-lg">
+              <p className="min-w-0 break-words text-base leading-relaxed text-slate-600 md:text-lg">
                 {service.description}
               </p>
             </motion.div>

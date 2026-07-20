@@ -36,27 +36,31 @@ function Work() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="work" className="py-36" aria-labelledby="work-heading">
-      <div className="section">
+    <section
+      id="work"
+      className="py-36"
+      aria-labelledby="work-heading"
+    >
+      <div className="section min-w-0">
         <p className="mb-6 text-sm uppercase tracking-[0.2em] text-teal-600">
           Selected Work
         </p>
 
         <h2
           id="work-heading"
-          className="mb-6 max-w-3xl text-4xl font-semibold text-slate-900 md:text-5xl"
+          className="mb-6 min-w-0 max-w-3xl break-words text-4xl font-semibold text-slate-900 md:text-5xl"
         >
           Projects that solved real business problems
         </h2>
 
-        <p className="max-w-3xl text-lg leading-relaxed text-slate-600">
+        <p className="min-w-0 max-w-3xl break-words text-lg leading-relaxed text-slate-600">
           Every project represents a unique business challenge. My focus isn't
           simply delivering websites or systems, but building practical digital
           solutions that improve operations, strengthen brands, and create
           long-term value for the businesses I work with.
         </p>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
+        <div className="mt-14 grid min-w-0 gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
           {projects.map((project, index) => {
             const blurPx = project.private
               ? project.blurAmount ?? DEFAULT_NDA_BLUR_PX
@@ -84,7 +88,7 @@ function Work() {
                   duration: 0.6,
                   ease: "easeOut",
                 }}
-                className="group relative min-h-[420px] overflow-hidden rounded-[30px] shadow-xl focus-within:ring-2 focus-within:ring-teal-500"
+                className="group relative min-w-0 min-h-[420px] overflow-hidden rounded-[30px] shadow-xl focus-within:ring-2 focus-within:ring-teal-500"
               >
                 {/* Background image */}
                 <img
@@ -98,18 +102,18 @@ function Work() {
                 <div className="absolute inset-0 bg-black/50 transition duration-500 group-hover:bg-black/60" />
 
                 {/* Content */}
-                <div className="relative z-10 flex h-full flex-col justify-end p-10 text-white">
+                <div className="relative z-10 flex h-full min-w-0 flex-col justify-end p-10 text-white">
                   {project.private && (
-                    <span className="mb-4 w-fit rounded-full bg-white/20 px-4 py-2 text-xs font-semibold backdrop-blur-md">
+                    <span className="mb-4 w-fit max-w-full break-words rounded-full bg-white/20 px-4 py-2 text-xs font-semibold backdrop-blur-md">
                       Private Client Deployment
                     </span>
                   )}
 
-                  <h3 className="mb-3 text-xl font-semibold transition-colors duration-300 group-hover:text-teal-200 md:text-2xl">
+                  <h3 className="mb-3 min-w-0 break-words text-xl font-semibold transition-colors duration-300 group-hover:text-teal-200 md:text-2xl">
                     {project.title}
                   </h3>
 
-                  <p className="leading-relaxed text-white/85">
+                  <p className="min-w-0 break-words leading-relaxed text-white/85">
                     {project.description}
                   </p>
                 </div>

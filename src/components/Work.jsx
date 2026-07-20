@@ -1,8 +1,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 
-import seventeeImage from "../assets/projects/seventee-hotel.png";
-import economicalImage from "../assets/projects/economical-solutions.png";
-import privateImage from "../assets/projects/private-project.png";
+import seventeeImage from "../assets/projects/seventee-hotel.webp";
+import economicalImage from "../assets/projects/economical-solutions.webp";
+import privateImage from "../assets/projects/private-project.webp";
 
 // Default blur strength (in px) applied to any project marked `private: true`.
 // Individual projects can still override this with `blurAmount`.

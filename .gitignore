@@ -31,5 +31,3 @@ dist-ssr
 
 # ...except the template committed to Git
 !.env.example
-.vercel
-.env*

@@ -109,7 +109,7 @@ function LetsTalk() {
                         href={item.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="block max-w-full break-words rounded-sm font-medium text-slate-800 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+                        className="block max-w-full whitespace-nowrap rounded-sm font-medium text-slate-800 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
                       >
                         {item.value}
                       </a>

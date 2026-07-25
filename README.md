@@ -94,6 +94,19 @@ The exact structure may evolve as the project develops, but changes should remai
 
 ---
 
+## Content publishing architecture
+
+The site now supports the content-to-consultation funnel without adding a new framework:
+
+* `/` remains the focused consultancy homepage.
+* `/blog` renders the current authority-building article, and `/blog/:slug` is ready for future articles.
+* `/work` renders data-driven project cards in a dedicated portfolio view.
+* `src/content/articles.js` contains article metadata, long-form blocks, optional Substack/TikTok embed configuration, a checklist, and CTA copy.
+* `src/content/caseStudies.js` contains project, challenge, solution, before/after, result, and optional metric data. Only substantiated metrics should be added.
+* `VITE_NEWSLETTER_FORM_ACTION` can be set to a hosted newsletter or Substack form endpoint when subscriptions are ready to go live.
+
+Blog and Work links intentionally open in a new tab. Homepage section links work from all routes and return visitors to the appropriate homepage section.
+
 ## Branding & SEO
 
 The project includes production-ready foundational branding and SEO assets, including:

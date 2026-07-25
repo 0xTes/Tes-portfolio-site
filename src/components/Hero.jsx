@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { BOOKING_URL } from "../lib/site";
 
 function Hero() {
   const shouldReduceMotion = useReducedMotion();
@@ -6,9 +7,9 @@ function Hero() {
   return (
     <section 
       aria-labelledby="hero-heading"
-      className="hero-gradient flex min-h-screen items-center pt-20 pb-32">
+      className="hero-gradient flex items-center py-12 md:min-h-screen md:pt-20 md:pb-32">
       
-      <div className="section grid items-center gap-16 lg:grid-cols-2">
+      <div className="section grid items-center gap-10 md:gap-16 lg:grid-cols-2">
         {/* Left: Hero Copy */}
         <motion.div
           initial={
@@ -25,8 +26,8 @@ function Hero() {
 
           <h1 
             id="hero-heading"
-            className="text-4xl font-semibold leading-tight text-slate-900 md:text-6xl lg:text-7xl">
-            Helping businesses grow through strategic websites, intelligent systems, and digital transformation.
+            className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl lg:text-[3.5rem]">
+            Helping growing businesses and creator-led brands eliminate bottlenecks with simple systems, better websites, and AI that drive revenue.
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-500">
@@ -37,14 +38,18 @@ function Hero() {
 
           <div className="hero-actions flex flex-wrap gap-4">
             <a
-              href="#contact"
+              href={BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex min-w-[240px] items-center justify-center rounded-full bg-teal-500 px-8 py-4 font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
-              Book a Strategy Call
+              Book a Discovery Call
             </a>
 
             <a
-              href="#work"
+              href="/work"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex min-w-[160px] items-center justify-center rounded-full bg-teal-500 px-8 py-4 font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               View Work
@@ -73,7 +78,7 @@ function Hero() {
                   ease: "easeInOut",
                 }
             }
-          className="relative flex h-[420px] items-center justify-center sm:h-[500px]"
+          className="relative flex h-[300px] items-center justify-center sm:h-[500px]"
         >
           <div
             aria-hidden="true"
@@ -86,7 +91,7 @@ function Hero() {
           />
 
           <div className="glass-card relative z-10 w-full max-w-[380px] rounded-[36px] p-6 shadow-2xl sm:max-w-[420px]">
-            <div className="h-[320px] overflow-hidden rounded-[28px] sm:h-[420px]">
+            <div className="h-[240px] overflow-hidden rounded-[28px] sm:h-[420px]">
               <img
                 src="/hero-photo.jpg"
                 alt="Portrait of Teslim Yussuph, founder of Teslim Digital"

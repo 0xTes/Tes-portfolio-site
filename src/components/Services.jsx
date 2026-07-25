@@ -104,7 +104,7 @@ function Services() {
                 {service.title}
               </h3>
 
-              <p className="min-w-0 break-words text-base leading-relaxed text-slate-600 md:text-lg">
+              <p className="min-w-0 break-words text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
                 {service.description}
               </p>
             </motion.div>

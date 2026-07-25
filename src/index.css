@@ -13,7 +13,6 @@ html {
 /* Prevent sticky navbar from covering section headings */
 #about,
 #services,
-#work,
 #contact {
   scroll-margin-top: 96px;
 }
@@ -47,6 +46,7 @@ body,
 body {
   background: var(--bg);
   color: var(--text);
+  overflow-x: clip;
   font-family:
     Inter,
     ui-sans-serif,
@@ -54,6 +54,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-size: 17px;
 }
 
 a {
@@ -115,4 +116,29 @@ video {
     linear-gradient(rgba(0, 0, 0, 0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+.article-copy p + p {
+  margin-top: 1.5rem;
+}
+
+.article-copy h2 {
+  margin-top: 3.25rem;
+  color: var(--text);
+  font-size: clamp(1.7rem, 4vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.article-copy h2 + p {
+  margin-top: 1.25rem;
+}
+
+.article-copy ul {
+  margin-top: 1.5rem;
+  padding-left: 1.35rem;
+}
+
+.article-copy li + li {
+  margin-top: 0.75rem;
 }

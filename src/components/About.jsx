@@ -59,14 +59,14 @@ function About() {
           }}
           className="glass-card min-w-0 rounded-[32px] p-10 transition duration-300 hover:-translate-y-1 hover:shadow-2xl motion-reduce:transition-none motion-reduce:hover:translate-y-0"
         >
-          <p className="min-w-0 break-words text-lg leading-relaxed text-slate-600">
+          <p className="min-w-0 break-words text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
             Technology should simplify operations, support growth,
             and create measurable value—not introduce unnecessary complexity.
             Every project begins with understanding your business, your goals,
             and the challenges standing in the way of sustainable growth.
           </p>
 
-          <p className="mt-6 min-w-0 break-words text-lg leading-relaxed text-slate-600">
+          <p className="mt-6 min-w-0 break-words text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
             From strategy and planning to websites, intelligent systems, and
             automation, I build digital solutions that are reliable,
             maintainable, and designed to evolve alongside your business. My

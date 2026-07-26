@@ -32,15 +32,14 @@ html {
   box-sizing: border-box;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 html,
 body,
 #root {
   min-height: 100%;
+}
+
+#root {
+  overflow-x: clip;
 }
 
 body {
@@ -55,6 +54,16 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 17px;
+}
+
+h1,
+h2,
+h3,
+p,
+li,
+dd {
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 
 a {
@@ -80,12 +89,67 @@ video {
 
 /* Reusable utilities */
 .section {
-  width: min(1280px, 92%);
+  width: min(1280px, calc(100% - 2.5rem));
   margin-inline: auto;
 }
 
 .hero-actions {
   margin-top: 48px;
+}
+
+.button-primary {
+  display: inline-flex;
+  max-width: 100%;
+  min-height: 3.25rem;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  border-radius: 9999px;
+  background: #0d9488;
+  padding: 0.875rem 1.75rem;
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  transition:
+    transform 300ms ease,
+    background-color 300ms ease,
+    box-shadow 300ms ease;
+}
+
+.button-primary:hover {
+  transform: translateY(-2px);
+  background: #0f766e;
+  box-shadow: 0 20px 25px -5px rgba(13, 148, 136, 0.2);
+}
+
+.button-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #0d9488, 0 0 0 4px var(--bg);
+}
+
+@media (max-width: 639px) {
+  .section {
+    width: min(1280px, calc(100% - 2rem));
+  }
+
+  .hero-actions {
+    margin-top: 2rem;
+  }
+
+  .hero-actions .button-primary {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button-primary {
+    transition: none;
+  }
+
+  .button-primary:hover {
+    transform: none;
+  }
 }
 
 .glass-card {

@@ -7,7 +7,7 @@ function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="py-36"
+      className="py-24 md:py-32"
     >
       <div className="section grid min-w-0 items-center gap-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
         {/* Left: Section Heading */}
@@ -57,7 +57,7 @@ function About() {
             duration: 0.6,
             ease: "easeOut",
           }}
-          className="glass-card min-w-0 rounded-[32px] p-10 transition duration-300 hover:-translate-y-1 hover:shadow-2xl motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+          className="glass-card min-w-0 rounded-[32px] p-7 transition duration-300 hover:-translate-y-1 hover:shadow-2xl sm:p-10 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
         >
           <p className="min-w-0 break-words text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
             Technology should simplify operations, support growth,

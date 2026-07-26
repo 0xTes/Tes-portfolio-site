@@ -2,22 +2,19 @@ import { motion, useReducedMotion } from "framer-motion";
 
 import { BOOKING_URL } from "../lib/site";
 
-const contactItems = [
-  {
-    icon: "✉",
-    label: "Email",
-    value: "tesdistro@gmail.com",
-    subtitle: "Reply within 24 hours",
-    href: "mailto:tesdistro@gmail.com",
-  },
-  {
-    icon: "◉",
-    label: "WhatsApp",
-    value: "+1 985 288 7616",
-    subtitle: "Available Mondays – Fridays",
-    href: "https://wa.me/19852887616",
-  },
-];
+const emailContact = {
+  label: "Email",
+  value: "tesdistro@gmail.com",
+  subtitle: "Reply within 24 hours",
+  href: "mailto:tesdistro@gmail.com",
+};
+
+const whatsappContact = {
+  label: "WhatsApp",
+  value: "+1 985 288 7616",
+  subtitle: "Available Mondays - Fridays",
+  href: "https://wa.me/19852887616",
+};
 
 const socialLinks = [
   { label: "LinkedIn", href: "https://linkedin.com/company/prozone-digital" },
@@ -32,7 +29,7 @@ export default function LetsTalk({ className = "" }) {
     <section
       id="contact"
       aria-labelledby="contact-heading"
-      className={`py-28 md:py-36 ${className}`}
+      className={`py-24 md:py-32 ${className}`}
     >
       <div className="section min-w-0">
         <motion.div
@@ -40,79 +37,71 @@ export default function LetsTalk({ className = "" }) {
           whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="relative grid min-w-0 gap-8 overflow-hidden lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
+          className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
         >
-          <div
-            className="pointer-events-none absolute inset-0 flex items-center justify-center overflow-hidden"
-            aria-hidden="true"
-          >
-            <span className="whitespace-nowrap text-[140px] font-black leading-none tracking-tight text-slate-900 opacity-[0.07] md:text-[220px] lg:text-[260px]">
-              CONTACT
-            </span>
-          </div>
-
-          <div className="glass-card relative z-10 min-w-0 rounded-[40px] p-8 sm:p-10 md:p-12">
+          <div className="glass-card min-w-0 rounded-[40px] p-6 sm:p-10 md:p-12">
             <p className="mb-5 text-sm uppercase tracking-[0.2em] text-teal-600">
               Available for new projects
             </p>
             <h2
               id="contact-heading"
-              className="mb-4 min-w-0 break-words text-3xl font-semibold text-slate-900 md:text-4xl"
+              className="mb-4 max-w-xl text-3xl font-semibold leading-tight text-slate-900 md:text-4xl"
             >
-              Let’s find the right next step.
+              Let&apos;s identify the bottleneck worth solving first.
             </h2>
             <p className="max-w-md text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
-              Whether you are planning a new website, exploring AI and
-              automation, or improving existing systems, the first step is a
-              focused conversation about the business outcome you need.
+              Start with a focused conversation about where momentum is being
+              lost, what outcome matters most, and the most useful next step.
             </p>
 
             <a
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 flex w-full items-center justify-center gap-3 rounded-2xl bg-teal-600 px-6 py-5 text-center font-semibold text-white transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              className="button-primary mt-8 w-full"
             >
-              Book a discovery call <span aria-hidden="true">→</span>
+              Book a discovery call <span aria-hidden="true">-&gt;</span>
             </a>
             <p className="mt-4 text-center text-sm text-slate-500">
-              Free 30-minute session · No obligation
+              Free 30-minute session - No obligation
             </p>
 
             <dl className="mt-10 space-y-6">
-              {contactItems.map((item) => (
-                <div key={item.label} className="flex min-w-0 items-start gap-4">
-                  <span className="mt-0.5 shrink-0 text-xl text-teal-700" aria-hidden="true">
-                    {item.icon}
-                  </span>
-                  <div className="min-w-0">
-                    <dt className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
-                      {item.label}
-                    </dt>
-                    <dd>
-                      <a
-                        href={item.href}
-                        target={item.label === "WhatsApp" ? "_blank" : undefined}
-                        rel={item.label === "WhatsApp" ? "noopener noreferrer" : undefined}
-                        className="break-anywhere rounded-sm font-medium text-slate-800 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
-                      >
-                        {item.value}
-                      </a>
-                    </dd>
-                    <p className="mt-1 text-sm text-slate-500">{item.subtitle}</p>
-                  </div>
-                </div>
-              ))}
-              <div className="flex min-w-0 items-start gap-4">
-                <span className="mt-0.5 shrink-0 text-xl text-teal-700" aria-hidden="true">
-                  ◌
-                </span>
-                <div className="min-w-0">
-                  <dt className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
-                    Location
-                  </dt>
-                  <dd className="font-medium text-slate-800">United States</dd>
-                </div>
+              <div className="min-w-0 rounded-[24px] border border-teal-100 bg-teal-50/60 p-5">
+                <dt className="mb-1 text-xs font-semibold uppercase tracking-widest text-teal-700">
+                  {emailContact.label}
+                </dt>
+                <dd>
+                  <a
+                    href={emailContact.href}
+                    className="break-anywhere rounded-sm font-semibold text-slate-800 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+                  >
+                    {emailContact.value}
+                  </a>
+                </dd>
+                <p className="mt-1 text-sm text-slate-500">{emailContact.subtitle}</p>
+              </div>
+              <div className="min-w-0">
+                <dt className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                  Prefer WhatsApp?
+                </dt>
+                <dd>
+                  <a
+                    href={whatsappContact.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="break-anywhere rounded-sm font-medium text-slate-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+                  >
+                    {whatsappContact.value}
+                  </a>
+                </dd>
+                <p className="mt-1 text-sm text-slate-500">{whatsappContact.subtitle}</p>
+              </div>
+              <div className="min-w-0">
+                <dt className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                  Location
+                </dt>
+                <dd className="font-medium text-slate-800">United States</dd>
               </div>
             </dl>
 
@@ -127,7 +116,7 @@ export default function LetsTalk({ className = "" }) {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="max-w-full break-words rounded-2xl border border-slate-200 px-5 py-3 text-sm font-medium text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-slate-900 hover:bg-slate-900 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                    className="max-w-full break-words rounded-full border border-slate-200 px-5 py-3 text-sm font-medium text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-500 hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                   >
                     {link.label}
                   </a>
@@ -136,7 +125,7 @@ export default function LetsTalk({ className = "" }) {
             </nav>
           </div>
 
-          <div className="glass-card relative z-10 flex min-w-0 flex-col justify-between gap-10 rounded-[40px] p-8 sm:p-10 md:p-12">
+          <div className="glass-card flex min-w-0 flex-col justify-between gap-10 rounded-[40px] p-6 sm:p-10 md:p-12">
             <div className="min-w-0">
               <div className="mb-6 flex items-center gap-3">
                 <span
@@ -145,13 +134,13 @@ export default function LetsTalk({ className = "" }) {
                 />
                 <span className="text-sm font-medium text-green-700">Available now</span>
               </div>
-              <h3 className="mb-3 text-2xl font-semibold text-slate-900 md:text-3xl">
+              <h3 className="mb-3 max-w-lg text-2xl font-semibold leading-tight text-slate-900 md:text-3xl">
                 A practical first conversation
               </h3>
-              <p className="text-[1.0625rem] leading-relaxed text-slate-600">
+              <p className="max-w-lg text-[1.0625rem] leading-relaxed text-slate-600">
                 We will discuss your goals, the friction your business is
-                experiencing, and the most useful path forward—with no pressure
-                to start a project before it makes sense.
+                experiencing, and the most useful path forward - with no
+                pressure to start a project before it makes sense.
               </p>
             </div>
             <div className="rounded-[28px] border border-teal-100 bg-teal-50/70 p-6">
@@ -159,9 +148,9 @@ export default function LetsTalk({ className = "" }) {
                 In the call
               </p>
               <ul className="mt-4 space-y-3 text-[1.0625rem] leading-relaxed text-slate-700">
-                <li className="flex gap-3"><span aria-hidden="true">✓</span><span>Clarify the business outcome that matters most.</span></li>
-                <li className="flex gap-3"><span aria-hidden="true">✓</span><span>Identify the bottleneck worth solving first.</span></li>
-                <li className="flex gap-3"><span aria-hidden="true">✓</span><span>Leave with a practical next step.</span></li>
+                <li className="flex min-w-0 gap-3"><span aria-hidden="true">✓</span><span>Clarify the business outcome that matters most.</span></li>
+                <li className="flex min-w-0 gap-3"><span aria-hidden="true">✓</span><span>Identify the bottleneck worth solving first.</span></li>
+                <li className="flex min-w-0 gap-3"><span aria-hidden="true">✓</span><span>Leave with a practical next step.</span></li>
               </ul>
             </div>
           </div>

@@ -13,6 +13,7 @@ export default function Seo({
   path = "/",
   type = "website",
   image = "/og-image.png",
+  imageAlt = "Teslim Digital - strategic websites, systems, and AI automation",
 }) {
   const canonicalUrl = absoluteUrl(path);
   const imageUrl = absoluteUrl(image);
@@ -26,6 +27,7 @@ export default function Seo({
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
       <meta property="og:image" content={imageUrl} />
+      <meta property="og:image:alt" content={imageAlt} />
       <meta property="og:url" content={canonicalUrl} />
       <meta property="og:type" content={type} />
       <meta property="og:site_name" content="Teslim Digital" />
@@ -34,6 +36,7 @@ export default function Seo({
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
+      <meta name="twitter:image:alt" content={imageAlt} />
     </Helmet>
   );
 }

@@ -54,8 +54,8 @@ function TikTokEmbed({ tiktok }) {
 
 export default function ArticleTemplate({ article }) {
   return (
-    <article className="section py-16 md:py-24">
-      <header className="mx-auto max-w-3xl">
+    <article className="section py-20 md:py-28">
+      <header className="mx-auto min-w-0 max-w-3xl">
         <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal-700">
           {article.category}
         </p>
@@ -86,7 +86,7 @@ export default function ArticleTemplate({ article }) {
         </figure>
       )}
 
-      <div className="article-copy mx-auto mt-12 max-w-[68ch] text-[1.0625rem] leading-8 text-slate-700 md:text-lg">
+      <div className="article-copy mx-auto mt-16 max-w-[68ch] text-[1.0625rem] leading-8 text-slate-700 md:text-lg">
         {article.content.map((block, index) => {
           if (block.type === "heading") {
             return (
@@ -110,7 +110,7 @@ export default function ArticleTemplate({ article }) {
         })}
       </div>
 
-      <div className="mx-auto max-w-[68ch]">
+      <div className="mx-auto min-w-0 max-w-[68ch]">
         <ExternalEmbed
           title={article.substack.title}
           src={article.substack.embedUrl}
@@ -120,10 +120,10 @@ export default function ArticleTemplate({ article }) {
 
         <section
           aria-labelledby="checklist-heading"
-          className="mt-12 rounded-[28px] border border-teal-100 bg-teal-50/70 p-7 sm:p-10"
+          className="mt-16 rounded-[28px] border border-teal-100 bg-teal-50/70 p-7 sm:p-10"
         >
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-teal-700">
-            Checklist
+            Practical insight
           </p>
           <h2
             id="checklist-heading"
@@ -148,7 +148,7 @@ export default function ArticleTemplate({ article }) {
 
         <section
           aria-labelledby="article-cta-heading"
-          className="glass-card mt-12 rounded-[28px] p-7 sm:p-10"
+          className="glass-card mt-16 rounded-[28px] p-7 sm:p-10"
         >
           <h2
             id="article-cta-heading"
@@ -163,7 +163,7 @@ export default function ArticleTemplate({ article }) {
             href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-7 inline-flex items-center justify-center rounded-full bg-teal-600 px-7 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-700 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-600 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+            className="button-primary mt-7"
           >
             {article.cta.label}
           </a>

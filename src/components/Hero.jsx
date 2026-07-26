@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { BOOKING_URL } from "../lib/site";
 
 function Hero() {
@@ -26,8 +27,8 @@ function Hero() {
 
           <h1 
             id="hero-heading"
-            className="text-4xl font-semibold leading-tight text-slate-900 md:text-5xl lg:text-[3.5rem]">
-            Helping growing businesses and creator-led brands eliminate bottlenecks with simple systems, better websites, and AI that drive revenue.
+            className="max-w-3xl text-4xl font-semibold leading-tight text-slate-900 md:text-5xl lg:text-[3.5rem]">
+            Helping businesses eliminate bottlenecks with simple systems, better websites, and AI that drive revenue.
           </h1>
 
           <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-500">
@@ -41,19 +42,17 @@ function Hero() {
               href={BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex min-w-[240px] items-center justify-center rounded-full bg-teal-500 px-8 py-4 font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              className="button-primary min-w-[240px]"
             >
               Book a Discovery Call
             </a>
 
-            <a
-              href="/work"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex min-w-[160px] items-center justify-center rounded-full bg-teal-500 px-8 py-4 font-bold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+            <Link
+              to="/work"
+              className="button-primary min-w-[160px]"
             >
               View Work
-            </a>
+            </Link>
           </div>
         </motion.div>
 

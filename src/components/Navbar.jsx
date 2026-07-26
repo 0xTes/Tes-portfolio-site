@@ -7,8 +7,8 @@ import logo from "../assets/branding/logo.svg";
 const navLinks = [
   { label: "About", to: "/#about" },
   { label: "Services", to: "/#services" },
-  { label: "Work", to: "/work", newTab: true },
-  { label: "Blog", to: "/blog", newTab: true },
+  { label: "Work", to: "/work" },
+  { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/#contact" },
 ];
 
@@ -70,8 +70,6 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 to={link.to}
-                target={link.newTab ? "_blank" : undefined}
-                rel={link.newTab ? "noopener noreferrer" : undefined}
                 className="rounded-lg px-2 py-2 text-gray-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
               >
                 {link.label}
@@ -80,7 +78,7 @@ export default function Navbar() {
 
             <a
               href="/#contact"
-              className="inline-flex min-w-[130px] items-center justify-center rounded-full bg-teal-500 px-6 py-3.5 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              className="button-primary min-w-[130px]"
             >
               Book Call
             </a>
@@ -134,8 +132,6 @@ export default function Navbar() {
                 <Link
                   key={link.label}
                   to={link.to}
-                  target={link.newTab ? "_blank" : undefined}
-                  rel={link.newTab ? "noopener noreferrer" : undefined}
                   onClick={() => closeMenu()}
                   className="rounded-lg px-3 py-2 text-gray-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
                 >
@@ -145,7 +141,7 @@ export default function Navbar() {
               <a
                 href="/#contact"
                 onClick={() => closeMenu()}
-                className="inline-flex min-w-[130px] items-center justify-center rounded-full bg-teal-500 px-8 py-3.5 text-center font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-teal-600 hover:shadow-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                className="button-primary w-full"
               >
                 Book Call
               </a>

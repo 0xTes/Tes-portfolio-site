@@ -32,7 +32,7 @@ function Services() {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="py-36"
+      className="py-24 md:py-32"
     >
       <div className="section min-w-0">
         {/* Section Heading */}
@@ -93,7 +93,7 @@ function Services() {
                 duration: 0.6,
                 ease: "easeOut",
               }}
-              className="glass-card min-w-0 min-h-[250px] rounded-[28px] p-10 transition duration-300 hover:-translate-y-1 hover:shadow-2xl motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              className="glass-card min-w-0 min-h-[250px] rounded-[28px] p-7 transition duration-300 hover:-translate-y-1 hover:shadow-2xl sm:p-10 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
             >
               <div
                 className="mb-6 h-1 w-12 rounded-full bg-teal-500"
@@ -104,7 +104,7 @@ function Services() {
                 {service.title}
               </h3>
 
-              <p className="min-w-0 break-words text-base leading-relaxed text-slate-600 md:text-lg">
+              <p className="min-w-0 break-words text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
                 {service.description}
               </p>
             </motion.div>

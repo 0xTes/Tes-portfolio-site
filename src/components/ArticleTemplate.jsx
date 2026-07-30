@@ -82,6 +82,8 @@ export default function ArticleTemplate({ article }) {
             className="h-auto w-full"
             loading="eager"
             decoding="async"
+            draggable="false"
+            onContextMenu={(event) => event.preventDefault()}
           />
         </figure>
       )}

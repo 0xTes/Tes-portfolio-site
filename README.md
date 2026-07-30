@@ -84,7 +84,8 @@ src/
 └── main.jsx
 
 public/
-├── favicon.svg
+├── favicon.ico
+├── site.webmanifest
 ├── og-image.png
 ├── robots.txt
 └── sitemap.xml

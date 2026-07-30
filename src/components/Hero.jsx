@@ -91,13 +91,19 @@ function Hero() {
 
           <div className="glass-card relative z-10 w-full max-w-[380px] rounded-[36px] p-6 shadow-2xl sm:max-w-[420px]">
             <div className="h-[240px] overflow-hidden rounded-[28px] sm:h-[420px]">
-              <img
-                src="/hero-photo.jpg"
-                alt="Portrait of Teslim Yussuph, founder of Teslim Digital"
-                className="h-full w-full object-cover transition duration-700 hover:scale-110 motion-reduce:hover:scale-100 motion-reduce:transition-none"
-                loading="eager"
-                decoding="async"
-              />
+              <picture>
+                <source srcSet="/hero-photo.avif" type="image/avif" />
+                <source srcSet="/hero-photo.webp" type="image/webp" />
+                <img
+                  src="/hero-photo.jpg"
+                  alt="Portrait of Teslim Yussuph, founder of Teslim Digital"
+                  className="h-full w-full object-cover transition duration-700 hover:scale-110 motion-reduce:hover:scale-100 motion-reduce:transition-none"
+                  loading="eager"
+                  decoding="async"
+                  draggable="false"
+                  onContextMenu={(event) => event.preventDefault()}
+                />
+              </picture>
             </div>
           </div>
         </motion.div>

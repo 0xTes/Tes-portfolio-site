@@ -17,6 +17,31 @@ export default function Seo({
 }) {
   const canonicalUrl = absoluteUrl(path);
   const imageUrl = absoluteUrl(image);
+  const organizationId = absoluteUrl("/#organization");
+  const websiteId = absoluteUrl("/#website");
+  const homepageUrl = absoluteUrl("/");
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": organizationId,
+      name: "Teslim Digital",
+      url: homepageUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/td-mark.png"),
+      },
+      description: DEFAULT_DESCRIPTION,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": websiteId,
+      name: "Teslim Digital",
+      url: homepageUrl,
+      publisher: { "@id": organizationId },
+    },
+  ];
 
   return (
     <Helmet>
@@ -37,6 +62,10 @@ export default function Seo({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
       <meta name="twitter:image:alt" content={imageAlt} />
+
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
     </Helmet>
   );
 }

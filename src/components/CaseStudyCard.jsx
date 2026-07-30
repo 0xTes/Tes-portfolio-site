@@ -110,6 +110,8 @@ export default function CaseStudyCard({ caseStudy, index }) {
           alt={`Supporting project screen for ${caseStudy.name}`}
           loading="lazy"
           decoding="async"
+          draggable="false"
+          onContextMenu={(event) => event.preventDefault()}
           className="h-60 w-full object-cover transition duration-700 hover:scale-[1.03] motion-reduce:transition-none motion-reduce:hover:scale-100 sm:h-72"
           style={blurPx ? { filter: `blur(${blurPx}px)` } : undefined}
         />

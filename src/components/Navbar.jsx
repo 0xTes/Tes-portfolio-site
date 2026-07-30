@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-import logo from "../assets/branding/logo.svg";
+import brandMark from "../assets/branding/td-mark.webp";
 
 const navLinks = [
   { label: "About", to: "/#about" },
@@ -54,7 +54,7 @@ export default function Navbar() {
               aria-label="Teslim Digital logo — return to homepage"
               className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
             >
-              <img src={logo} alt="Teslim Digital" className="h-10 w-auto" />
+              <img src={brandMark} alt="" className="h-10 w-10 object-contain" />
             </Link>
             <Link
               to="/"

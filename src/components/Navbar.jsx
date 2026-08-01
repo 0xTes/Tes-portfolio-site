@@ -16,6 +16,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
   const shouldReduceMotion = useReducedMotion();
   const menuButtonRef = useRef(null);
+  const mobileMenuRef = useRef(null);
 
   function closeMenu(returnFocus = false) {
     setOpen(false);
@@ -40,6 +41,30 @@ export default function Navbar() {
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
+
+  useEffect(() => {
+  if (!open) return;
+
+  function handlePointerDown(event) {
+    const menu = mobileMenuRef.current;
+    const button = menuButtonRef.current;
+
+    if (!menu || !button) return;
+
+    const clickedInsideMenu = menu.contains(event.target);
+    const clickedButton = button.contains(event.target);
+
+    if (!clickedInsideMenu && !clickedButton) {
+      closeMenu();
+    }
+  }
+
+  document.addEventListener("pointerdown", handlePointerDown);
+
+  return () => {
+    document.removeEventListener("pointerdown", handlePointerDown);
+  };
+}, [open]);
 
   return (
     <>
@@ -119,6 +144,7 @@ export default function Navbar() {
       <AnimatePresence>
         {open && (
           <motion.nav
+            ref={mobileMenuRef}
             id="mobile-navigation"
             aria-label="Mobile navigation"
             initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -24 }}

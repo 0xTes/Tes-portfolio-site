@@ -99,7 +99,7 @@ const privacySections = [
     title: "13. Contact",
     content: [
       { type: "paragraph", text: "If you have questions regarding this Privacy Policy, please contact:" },
-      { type: "contact", items: ["Teslim Digital", "Website: Teslim Digital", "Email: hello@teslim.digital"] },
+      { type: "contact", items: ["Teslim Digital", "Email: hello@teslim.digital"] },
     ],
   },
 ];
@@ -214,7 +214,7 @@ const termsSections = [
     title: "15. Contact Information",
     content: [
       { type: "paragraph", text: "Questions regarding these Terms may be directed to:" },
-      { type: "contact", items: ["Teslim Digital", "Website: Teslim Digital", "Email: [hello@teslim.digital]"] },
+      { type: "contact", items: ["Teslim Digital", "Email: hello@teslim.digital"] },
     ],
   },
 ];

@@ -143,3 +143,59 @@ Future newsletter providers and content services should integrate through clearl
 
 - Slightly more architectural planning is required during Version 1.
 - Some abstractions will exist before multiple providers are implemented.
+
+
+
+
+# Problem Statement
+
+Teslim Digital requires a content publishing system that enables long-form articles to be published efficiently while providing a consistent, high-quality reading experience on the Teslim Digital website.
+
+Traditional publishing workflows often require the same article to be maintained across multiple platforms. Publishing directly on a website while also publishing to an external newsletter platform creates duplicate editorial work, increases the likelihood of inconsistent content, and makes long-term maintenance unnecessarily difficult.
+
+Relying solely on Substack introduces a different challenge. While Substack provides an excellent publishing and email platform, directing visitors away from the Teslim Digital website reduces control over the reading experience, weakens brand consistency, limits integration with the wider website, and constrains future opportunities for content-driven marketing.
+
+The Blog System must therefore solve two problems simultaneously:
+
+1. Maintain a single authoritative publishing workflow so that every article is written and published only once.
+
+2. Deliver a fully native reading experience that integrates seamlessly with the Teslim Digital website, preserving branding, navigation, accessibility, SEO, and future extensibility.
+
+The solution must minimize manual effort, eliminate duplicate content management, and establish a scalable foundation that supports future newsletter providers, marketing automation, analytics, and additional platform capabilities without requiring significant architectural changes.
+
+Failure to solve these problems would result in fragmented content management, inconsistent user experiences, increased maintenance costs, reduced editorial efficiency, and unnecessary technical complexity as the platform evolves.
+
+
+## Design Decisions
+
+### Decision 004
+
+**Decision**
+
+Separate the definition of the problem from the implementation strategy.
+
+**Rationale**
+
+Clearly defining the business and product problems before discussing technical solutions ensures that architectural decisions remain focused on solving genuine user and business needs rather than being driven by specific technologies.
+
+**Trade-offs**
+
+- Requires additional architectural documentation.
+- Encourages deliberate planning before implementation.
+
+---
+
+### Decision 005
+
+**Decision**
+
+Treat content publishing and content presentation as separate concerns.
+
+**Rationale**
+
+Publishing content and presenting content are independent responsibilities. Separating these concerns allows Teslim Digital to evolve its website independently of its publishing platform while maintaining a single editorial workflow.
+
+**Trade-offs**
+
+- Introduces an additional synchronization layer between publishing and presentation.
+- Requires clear contracts between content ingestion and rendering.

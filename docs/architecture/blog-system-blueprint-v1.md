@@ -633,3 +633,679 @@ From this point forward, subsequent sections of this blueprint describe **how** 
 Changes that alter the intent, goals, or scope defined above should be considered architectural decisions and documented through the project's Architecture Decision Records (ADRs) before implementation proceeds.
 
 This approval marks the completion of **Phase 1 — Product Architecture** and authorizes the beginning of **Phase 2 — Technical Architecture**.
+
+
+# Phase 2 — Technical Architecture
+
+The Technical Architecture describes how the Teslim Digital Blog System fulfills the product vision established in Phase 1.
+
+This phase defines the system boundaries, major architectural components, data flow, integration points, and engineering decisions required to implement a maintainable, extensible, and high-performance publishing platform.
+
+The Technical Architecture must remain consistent with the approved Product Architecture and should focus on implementation strategy rather than business objectives.
+
+---
+
+# System Context
+
+The Teslim Digital Blog System exists within a broader ecosystem of external services, internal website components, and future platform integrations.
+
+Its responsibility is to retrieve published content from an external publishing provider, transform that content into the website's internal representation, and present it through a fully native reading experience.
+
+The Blog System does not create content. It consumes published content and makes it available through the Teslim Digital website.
+
+Version 1 defines the following primary systems.
+
+## External Systems
+
+### Substack
+
+Substack is the authoritative publishing platform.
+
+Responsibilities:
+
+- Writing articles
+- Editing articles
+- Publishing articles
+- Providing RSS feeds
+- Managing subscribers (outside Version 1)
+
+---
+
+### Search Engines
+
+Search engines discover and index native article pages published by the Teslim Digital website.
+
+Responsibilities:
+
+- Crawling article pages
+- Ranking content
+- Driving organic traffic
+
+---
+
+### Future Newsletter Providers
+
+The Blog System is designed to support future newsletter integrations through defined interfaces.
+
+Examples include:
+
+- Sendy + Amazon SES
+- Beehiiv
+- Mailcoach
+
+These systems are intentionally outside the scope of Version 1.
+
+---
+
+## Internal Systems
+
+### Blog System
+
+Responsibilities:
+
+- Synchronize published articles
+- Transform external content
+- Render native articles
+- Provide article listings
+- Support internal navigation
+
+---
+
+### Design System
+
+Provides:
+
+- Typography
+- Layout
+- Components
+- Accessibility standards
+- Visual consistency
+
+---
+
+### SEO Layer
+
+Provides:
+
+- Structured metadata
+- Canonical URLs
+- Open Graph metadata
+- Sitemap integration
+
+---
+
+## Future Systems
+
+The architecture intentionally allows future integration with systems such as:
+
+- Analytics platforms
+- AI-assisted content workflows
+- Marketing automation
+- Client publishing solutions
+- Recommendation engines
+
+These integrations should extend the Blog System without changing its core responsibilities.
+
+
+## System Context Diagram
+
+```text
+                    Content Author
+                          │
+                          ▼
+                  ┌─────────────────┐
+                  │    Substack     │
+                  │ (Source of Truth)
+                  └────────┬────────┘
+                           │
+                        RSS Feed
+                           │
+                           ▼
+          ┌────────────────────────────────┐
+          │ Teslim Digital Blog System     │
+          │                                │
+          │ • Content Pipeline             │
+          │ • Native Rendering             │
+          │ • SEO                          │
+          │ • Blog Pages                   │
+          └──────────────┬─────────────────┘
+                         │
+          ┌──────────────┼──────────────┐
+          ▼              ▼              ▼
+      Visitors     Search Engines   Newsletter
+                                      Interface
+                                           │
+                                           ▼
+                            Sendy / SES (V1)
+                            Beehiiv (Future)
+                            Mailcoach (Future)
+```
+
+---
+
+# System Boundaries
+
+## Inside the Blog System
+
+- RSS ingestion
+- Content transformation
+- Native article rendering
+- Blog listing
+- SEO metadata
+- Internal navigation
+
+## Outside the Blog System
+
+- Article writing
+- Article editing
+- Publishing workflow
+- Subscriber management
+- Email campaigns
+- Newsletter automation
+- Analytics platforms
+
+---
+
+# High-Level Architecture
+
+```text
+          Publish Article
+                 │
+                 ▼
+            Substack
+                 │
+             RSS Feed
+                 │
+                 ▼
+         Content Pipeline
+                 │
+                 ▼
+      Internal Content Model
+                 │
+        ┌────────┴────────┐
+        ▼                 ▼
+   Blog Listing      Article Pages
+        │                 │
+        └────────┬────────┘
+                 ▼
+            Design System
+                 │
+                 ▼
+             Website UI
+```
+
+---
+
+# Content Lifecycle
+
+```text
+Draft
+  │
+  ▼
+Publish
+(Substack)
+  │
+  ▼
+RSS Feed
+  │
+  ▼
+Fetch
+  │
+  ▼
+Transform
+  │
+  ▼
+Validate
+  │
+  ▼
+Render
+  │
+  ▼
+SEO Generation
+  │
+  ▼
+Published on
+Teslim Digital
+```
+
+### Lifecycle Stages
+
+| Stage | Responsibility |
+|--------|----------------|
+| Draft | Content authored in Substack |
+| Publish | Article becomes publicly available |
+| Fetch | Retrieve latest RSS entries |
+| Transform | Convert RSS into internal content model |
+| Validate | Ensure required metadata exists |
+| Render | Generate native article page |
+| SEO | Generate metadata and structured data |
+| Publish | Article available on Teslim Digital |
+
+
+# Content Pipeline
+
+## Purpose
+
+Synchronize published articles from Substack and render them as native pages on the Teslim Digital website.
+
+---
+
+## Pipeline
+
+```text
+Substack
+    │
+    ▼
+RSS Feed
+    │
+    ▼
+Fetch
+    │
+    ▼
+Parse
+    │
+    ▼
+Transform
+    │
+    ▼
+Validate
+    │
+    ▼
+Internal Content Model
+    │
+    ▼
+Render
+    │
+    ▼
+SEO Generation
+    │
+    ▼
+Website
+```
+
+---
+
+## Pipeline Stages
+
+| Stage | Responsibility |
+|--------|----------------|
+| Fetch | Retrieve RSS feed |
+| Parse | Read RSS XML |
+| Transform | Convert to internal model |
+| Validate | Ensure required fields exist |
+| Render | Generate native pages |
+| SEO | Generate metadata |
+| Publish | Display on website |
+
+# Internal Content Model
+
+Every article is transformed into a consistent internal structure before rendering.
+
+## Required Fields
+
+| Field | Required |
+|--------|----------|
+| Title | ✓ |
+| Slug | ✓ |
+| Summary | ✓ |
+| Author | ✓ |
+| Published Date | ✓ |
+| Updated Date | Optional |
+| Featured Image | Optional |
+| Categories | Optional |
+| Tags | Optional |
+| Reading Time | ✓ |
+| Article Body | ✓ |
+| Canonical URL | ✓ |
+
+---
+
+## Principles
+
+- Provider-independent
+- Immutable after transformation
+- Framework-independent
+- Consistent across all articles
+
+
+# Rendering Strategy
+
+## Goal
+
+Render every article as a native Teslim Digital page.
+
+---
+
+## Rendering Flow
+
+```text
+Internal Content Model
+          │
+          ▼
+Layout
+          │
+          ▼
+Typography
+          │
+          ▼
+SEO
+          │
+          ▼
+Article Page
+```
+
+---
+
+## Principles
+
+- Native rendering
+- Shared design system
+- Semantic HTML
+- Mobile-first
+- Accessible by default
+
+
+# Routing Strategy
+
+## URL Structure
+
+```text
+/blog
+
+/blog/article-slug
+```
+
+---
+
+## Principles
+
+- Human-readable URLs
+- Stable permalinks
+- SEO-friendly slugs
+- Canonical URLs
+- No provider-specific URLs
+
+# SEO Strategy
+
+## Every Article Must Include
+
+- Unique title
+- Meta description
+- Canonical URL
+- Open Graph metadata
+- Twitter/X metadata
+- Structured data
+- Sitemap inclusion
+
+---
+
+## Principles
+
+- Native indexing
+- No duplicate content
+- Fast loading
+- Clean URL structure
+
+
+# Accessibility Strategy
+
+## Standards
+
+- WCAG 2.2 AA
+- Semantic HTML
+- Keyboard navigation
+- Proper heading hierarchy
+- Alt text for images
+- Sufficient color contrast
+- Visible focus states
+
+---
+
+## Principles
+
+Accessibility is a core requirement, not an enhancement.
+
+# Performance Strategy
+
+## Priorities
+
+- Fast first load
+- Optimized images
+- Minimal JavaScript
+- Efficient rendering
+- Responsive layouts
+
+---
+
+## Success Metrics
+
+- High Lighthouse scores
+- Low layout shift
+- Fast Largest Contentful Paint
+
+# Caching Strategy
+
+## Strategy
+
+```text
+RSS Feed
+    │
+    ▼
+Server Cache
+    │
+    ▼
+Rendered Pages
+```
+
+---
+
+## Principles
+
+- Avoid unnecessary requests
+- Refresh automatically
+- Serve cached content when available
+- Keep content reasonably fresh
+
+
+# Error Handling
+
+## Potential Failures
+
+- RSS unavailable
+- Invalid RSS
+- Missing metadata
+- Rendering failure
+
+---
+
+## Strategy
+
+- Log errors
+- Fail gracefully
+- Preserve existing published content
+- Never expose internal errors to visitors
+
+# Architecture Review
+
+## Product Alignment
+
+- ✓ Supports Product Architecture
+- ✓ Maintains Version 1 scope
+- ✓ Preserves native experience
+
+---
+
+## Engineering Principles
+
+- Single source of truth
+- Separation of concerns
+- Provider independence
+- Accessibility by default
+- Performance by default
+
+---
+
+## Review Checklist
+
+- Clear system boundaries
+- Defined content flow
+- Consistent internal model
+- Native rendering
+- SEO-ready
+- Accessible
+- Performant
+- Extensible
+
+---
+
+## Phase Approval
+
+This concludes **Phase 2 — Technical Architecture**.
+
+The implementation phase may begin after architectural review and approval.
+
+
+
+
+# Implementation Roadmap
+
+The Blog System will be implemented incrementally to reduce risk, simplify testing, and ensure every milestone results in a working, deployable application.
+
+Each milestone builds upon the previous one and must be completed, reviewed, and approved before the next begins.
+
+---
+
+## Milestone 0 — Project Preparation
+
+### Objective
+
+Prepare the codebase for Blog System implementation.
+
+### Deliverables
+
+- Create implementation branch.
+- Verify architecture documentation.
+- Create restore point.
+- Confirm deployment pipeline.
+
+---
+
+## Milestone 1 — Content Integration
+
+### Objective
+
+Retrieve published articles from Substack.
+
+### Deliverables
+
+- RSS retrieval
+- RSS parsing
+- Content validation
+- Error handling
+
+---
+
+## Milestone 2 — Internal Content Model
+
+### Objective
+
+Transform RSS content into the Blog System's internal representation.
+
+### Deliverables
+
+- Content transformer
+- Shared article model
+- Metadata validation
+- Reading time calculation
+
+---
+
+## Milestone 3 — Blog Experience
+
+### Objective
+
+Render native blog pages.
+
+### Deliverables
+
+- Blog index
+- Article page
+- Related articles
+- Shared layouts
+- Native typography
+
+---
+
+## Milestone 4 — SEO & Discoverability
+
+### Objective
+
+Optimize every article for search engines and sharing.
+
+### Deliverables
+
+- Metadata
+- Open Graph
+- Structured data
+- Sitemap
+- Canonical URLs
+
+---
+
+## Milestone 5 — Newsletter Integration
+
+### Objective
+
+Connect the shared newsletter interface to the selected provider.
+
+### Version 1
+
+- Sendy
+- Amazon SES
+
+### Future Providers
+
+- Beehiiv
+- Mailcoach
+- Additional providers
+
+---
+
+## Milestone 6 — Quality Assurance
+
+### Objective
+
+Verify production readiness.
+
+### Deliverables
+
+- Accessibility review
+- Performance testing
+- SEO audit
+- Cross-browser testing
+- Mobile testing
+
+---
+
+## Milestone 7 — Production Release
+
+### Objective
+
+Deploy the Blog System to production.
+
+### Deliverables
+
+- Production deployment
+- Final verification
+- Documentation review
+- Architecture sign-off
+
+---
+
+## Guiding Principles
+
+- Ship working software incrementally.
+- Maintain a deployable codebase after every milestone.
+- Preserve a single source of truth.
+- Keep the implementation aligned with the approved architecture.
+- Record significant architectural changes through ADRs before implementation.

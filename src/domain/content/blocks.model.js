@@ -24,12 +24,6 @@
  * ============================================================================
  */
 
-import {
-  BLOCK_TYPES,
-  LIST_TYPES,
-  EMBED_PROVIDERS,
-} from "./constants.js";
-
 /**
  * --------------------------------------------------------------------------
  * Base Content Block
@@ -44,14 +38,14 @@ import {
 
 /**
  * @typedef {BaseBlock & {
- *   type: typeof BLOCK_TYPES.PARAGRAPH,
+ *   type: "paragraph",
  *   text: string
  * }} ParagraphBlock
  */
 
 /**
  * @typedef {BaseBlock & {
- *   type: typeof BLOCK_TYPES.HEADING,
+ *   type: "heading",
  *   level: 1|2|3|4|5|6,
  *   text: string
  * }} HeadingBlock
@@ -59,15 +53,15 @@ import {
 
 /**
  * @typedef {BaseBlock & {
- *   type: typeof BLOCK_TYPES.LIST,
- *   style: typeof LIST_TYPES[keyof typeof LIST_TYPES],
+ *   type: "list",
+ *   style: "ordered" | "unordered",
  *   items: string[]
  * }} ListBlock
  */
 
 /**
  * @typedef {BaseBlock & {
- *   type: typeof BLOCK_TYPES.QUOTE,
+ *   type: "quote",
  *   text: string,
  *   citation: string | null
  * }} QuoteBlock
@@ -75,7 +69,7 @@ import {
 
 /**
  * @typedef {BaseBlock & {
- *   type: typeof BLOCK_TYPES.IMAGE,
+ *   type: "image",
  *   src: string,
  *   alt: string,
  *   caption: string | null
@@ -84,15 +78,21 @@ import {
 
 /**
  * @typedef {BaseBlock & {
- *   type: typeof BLOCK_TYPES.GALLERY,
+ *   type: "gallery",
  *   images: ImageBlock[]
  * }} GalleryBlock
  */
 
 /**
  * @typedef {BaseBlock & {
- *   type: typeof BLOCK_TYPES.EMBED,
- *   provider: typeof EMBED_PROVIDERS[keyof typeof EMBED_PROVIDERS],
+ *   type: "embed",
+ *   provider:
+       | "substack"
+       | "tiktok"
+       | "youtube"
+       | "vimeo"
+       | "spotify",
+       | "generic",
  *   url: string,
  *   title: string | null
  * }} EmbedBlock
@@ -100,7 +100,7 @@ import {
 
 /**
  * @typedef {BaseBlock & {
- *   type: typeof BLOCK_TYPES.CODE,
+ *   type: "code",
  *   language: string,
  *   code: string
  * }} CodeBlock
@@ -108,7 +108,7 @@ import {
 
 /**
  * @typedef {BaseBlock & {
- *   type: typeof BLOCK_TYPES.CALLOUT,
+ *   type: "callout",
  *   title: string | null,
  *   text: string,
  *   tone: string
@@ -117,7 +117,7 @@ import {
 
 /**
  * @typedef {BaseBlock & {
- *   type: typeof BLOCK_TYPES.DIVIDER
+ *   type: "divider",
  * }} DividerBlock
  */
 

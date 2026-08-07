@@ -54,7 +54,7 @@
 /**
  * @typedef {BaseBlock & {
  *   type: "list",
- *   style: "ordered" | "unordered",
+ *   style: "ordered" | "unordered" | "checklist",
  *   items: string[]
  * }} ListBlock
  */
@@ -91,7 +91,7 @@
        | "tiktok"
        | "youtube"
        | "vimeo"
-       | "spotify",
+       | "spotify"
        | "generic",
  *   url: string,
  *   title: string | null

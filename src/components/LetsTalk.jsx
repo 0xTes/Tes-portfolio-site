@@ -1,12 +1,12 @@
 import { motion, useReducedMotion } from "framer-motion";
 
-import { BOOKING_URL } from "../lib/site";
+import { BOOKING_URL, CONTACT_EMAIL } from "../lib/site";
 
 const emailContact = {
   label: "Email",
-  value: "tesdistro@gmail.com",
+  value: CONTACT_EMAIL,
   subtitle: "Reply within 24 hours",
-  href: "mailto:tesdistro@gmail.com",
+  href: `mailto:${CONTACT_EMAIL}`,
 };
 
 const whatsappContact = {

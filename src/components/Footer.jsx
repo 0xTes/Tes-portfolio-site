@@ -1,4 +1,4 @@
-import { STORE_URL } from "../lib/site";
+import { STORE_URL, SUPPORT_EMAIL } from "../lib/site";
 import horizontalLogo from "../assets/branding/teslim-digital-horizontal.webp";
 
 const navigationLinks = [
@@ -105,6 +105,14 @@ export default function Footer() {
             </p>
             <p className="mt-2 text-xs leading-relaxed text-slate-500">
               AI &amp; Automation - Systems - Websites
+            </p>
+            <p className="mt-3 text-sm">
+              <a
+                href={`mailto:${SUPPORT_EMAIL}`}
+                className="text-slate-400 transition-colors hover:text-teal-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-300"
+              >
+                {SUPPORT_EMAIL}
+              </a>
             </p>
           </div>
           <div aria-hidden="true" className="hidden md:block" />

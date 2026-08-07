@@ -7,6 +7,9 @@ export const BOOKING_URL =
 
 export const STORE_URL = "https://teslimdigital.shop";
 
+export const CONTACT_EMAIL = "hello@teslim.digital";
+export const SUPPORT_EMAIL = "support@teslim.digital";
+
 export function absoluteUrl(path = "/") {
   return new URL(path, `${SITE_URL}/`).toString();
 }

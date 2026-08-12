@@ -7,10 +7,15 @@ export const BLOG_CONTENT_STATUS = Object.freeze({
   EMPTY: "empty",
   UNAVAILABLE: "unavailable",
   INVALID: "invalid",
+  NOT_FOUND: "not-found",
 });
 
 function createResult(status, articles = []) {
   return Object.freeze({ status, articles: Object.freeze(articles) });
+}
+
+function createArticleResult(status, article = null) {
+  return Object.freeze({ status, article });
 }
 
 function sortByPublicationDate(articles) {
@@ -69,6 +74,34 @@ export function createBlogContentAccess({
         ? createResult(BLOG_CONTENT_STATUS.READY, sortByPublicationDate(articles))
         : createResult(BLOG_CONTENT_STATUS.INVALID);
     },
+
+    async getArticleBySlug(slug) {
+      let providerArticle;
+
+      try {
+        providerArticle = await provider.fetchArticleBySlug(slug);
+      } catch (error) {
+        return createArticleResult(
+          error?.code === "invalid-feed"
+            ? BLOG_CONTENT_STATUS.INVALID
+            : BLOG_CONTENT_STATUS.UNAVAILABLE,
+        );
+      }
+
+      if (!providerArticle) {
+        return createArticleResult(BLOG_CONTENT_STATUS.NOT_FOUND);
+      }
+
+      try {
+        const article = mapper.mapArticle(providerArticle);
+
+        return validate(article).valid
+          ? createArticleResult(BLOG_CONTENT_STATUS.READY, article)
+          : createArticleResult(BLOG_CONTENT_STATUS.INVALID);
+      } catch {
+        return createArticleResult(BLOG_CONTENT_STATUS.INVALID);
+      }
+    },
   });
 }
 
@@ -79,6 +112,7 @@ const mapper = createSubstackRssMapper();
 const blogContentAccess = createBlogContentAccess({ provider, mapper });
 
 let articlesRequest;
+const articleRequests = new Map();
 
 /**
  * Gets the current blog listing data. The in-flight/result promise is shared
@@ -87,4 +121,16 @@ let articlesRequest;
 export function getBlogArticles() {
   articlesRequest ||= blogContentAccess.getArticles();
   return articlesRequest;
+}
+
+/**
+ * Gets a single canonical blog Article by slug.
+ * The in-flight/result promise is shared per slug.
+ */
+export function getBlogArticleBySlug(slug) {
+  if (!articleRequests.has(slug)) {
+    articleRequests.set(slug, blogContentAccess.getArticleBySlug(slug));
+  }
+
+  return articleRequests.get(slug);
 }

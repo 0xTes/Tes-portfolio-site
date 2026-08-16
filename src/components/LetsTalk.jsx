@@ -1,12 +1,13 @@
 import { motion, useReducedMotion } from "framer-motion";
 
-import { BOOKING_URL } from "../lib/site";
+import { BOOKING_URL, CONTACT_EMAIL } from "../lib/site";
+import SocialIcon from "./SocialIcon";
 
 const emailContact = {
   label: "Email",
-  value: "tesdistro@gmail.com",
+  value: CONTACT_EMAIL,
   subtitle: "Reply within 24 hours",
-  href: "mailto:tesdistro@gmail.com",
+  href: `mailto:${CONTACT_EMAIL}`,
 };
 
 const whatsappContact = {
@@ -17,9 +18,31 @@ const whatsappContact = {
 };
 
 const socialLinks = [
-  { label: "LinkedIn", href: "https://linkedin.com/company/prozone-digital" },
-  { label: "GitHub", href: "https://github.com/0xTes" },
-  { label: "X (Twitter)", href: "https://twitter.com/prozone_digital" },
+  {
+    label: "Instagram",
+    icon: "instagram",
+    href: "https://www.instagram.com/teslim.digital_",
+  },
+  {
+    label: "Snapchat",
+    icon: "snapchat",
+    href: "https://www.snapchat.com/@teslim.digital",
+  },
+  {
+    label: "Substack",
+    icon: "substack",
+    href: "https://substack.com/@teslimdigital",
+  },
+  {
+    label: "TikTok",
+    icon: "tiktok",
+    href: "https://www.tiktok.com/@teslim.digital",
+  },
+  {
+    label: "X",
+    icon: "x",
+    href: "https://x.com/teslim_digital",
+  },
 ];
 
 export default function LetsTalk({ className = "" }) {
@@ -116,9 +139,11 @@ export default function LetsTalk({ className = "" }) {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="max-w-full break-words rounded-full border border-slate-200 px-5 py-3 text-sm font-medium text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-500 hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                    aria-label={link.label}
+                    title={link.label}
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-500 hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                   >
-                    {link.label}
+                    <SocialIcon name={link.icon} />
                   </a>
                 ))}
               </div>

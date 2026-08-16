@@ -1,6 +1,7 @@
 import horizontalLogo from "../assets/branding/teslim-digital-horizontal.webp";
 import PageShell from "../components/PageShell";
 import Seo from "../components/Seo";
+import { SUPPORT_EMAIL } from "../lib/site";
 
 const privacySections = [
   {
@@ -99,7 +100,7 @@ const privacySections = [
     title: "13. Contact",
     content: [
       { type: "paragraph", text: "If you have questions regarding this Privacy Policy, please contact:" },
-      { type: "contact", items: ["Teslim Digital", "Email: hello@teslim.digital"] },
+      { type: "contact", items: ["Teslim Digital", `Email: ${SUPPORT_EMAIL}`] },
     ],
   },
 ];
@@ -214,7 +215,7 @@ const termsSections = [
     title: "15. Contact Information",
     content: [
       { type: "paragraph", text: "Questions regarding these Terms may be directed to:" },
-      { type: "contact", items: ["Teslim Digital", "Email: hello@teslim.digital"] },
+      { type: "contact", items: ["Teslim Digital", `Email: ${SUPPORT_EMAIL}`] },
     ],
   },
 ];

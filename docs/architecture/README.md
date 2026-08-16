@@ -23,6 +23,7 @@ Our goals are:
 - Blog System Blueprint (Version 1)
 - Newsletter Platform Architecture
 - Content Pipeline
+- FeedLog AI Concierge Architecture
 
 ### Architecture Decision Records (ADR)
 

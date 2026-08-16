@@ -45,6 +45,18 @@ Example:
 
 ---
 
+## AI Concierge
+
+The future optional guidance layer around FeedLog. It is not part of FeedLog Core and must never prevent core feedback portal functions from working.
+
+---
+
+## Approved Knowledge
+
+Information explicitly approved for use by the future AI Concierge. It defines the authoritative boundary for AI answers about Teslim Digital.
+
+---
+
 ## Article
 
 A published piece of long-form written content originating from the project's primary content source (Substack).

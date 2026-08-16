@@ -1,8 +1,11 @@
 # FeedLog AI Concierge Architecture
 
-**Status:** Proposed  
-**Version:** 1.0.0  
-**Last Updated:** 2026-08-16  
+**Status:** Proposed
+
+**Version:** 1.0.0
+
+**Last Updated:** 2026-08-16
+
 **Owner:** Teslim Digital
 
 ---

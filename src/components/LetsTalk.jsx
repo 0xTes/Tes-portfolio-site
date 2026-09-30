@@ -1,6 +1,11 @@
 import { motion, useReducedMotion } from "framer-motion";
 
-import { BOOKING_URL, CONTACT_EMAIL } from "../lib/site";
+import {
+  BOOKING_URL,
+  BUSINESS_LOCATION,
+  BUSINESS_PHONE,
+  CONTACT_EMAIL,
+} from "../lib/site";
 import SocialIcon from "./SocialIcon";
 
 const emailContact = {
@@ -10,11 +15,10 @@ const emailContact = {
   href: `mailto:${CONTACT_EMAIL}`,
 };
 
-const whatsappContact = {
-  label: "WhatsApp",
-  value: "+1 985 288 7616",
-  subtitle: "Available Mondays - Fridays",
-  href: "https://wa.me/19852887616",
+const phoneContact = {
+  label: "Phone",
+  value: BUSINESS_PHONE,
+  href: `tel:+${BUSINESS_PHONE.replace(/\D/g, "")}`,
 };
 
 const socialLinks = [
@@ -106,25 +110,22 @@ export default function LetsTalk({ className = "" }) {
               </div>
               <div className="min-w-0">
                 <dt className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
-                  Prefer WhatsApp?
+                  {phoneContact.label}
                 </dt>
                 <dd>
                   <a
-                    href={whatsappContact.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={phoneContact.href}
                     className="break-anywhere rounded-sm font-medium text-slate-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
                   >
-                    {whatsappContact.value}
+                    {phoneContact.value}
                   </a>
                 </dd>
-                <p className="mt-1 text-sm text-slate-500">{whatsappContact.subtitle}</p>
               </div>
               <div className="min-w-0">
                 <dt className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
                   Location
                 </dt>
-                <dd className="font-medium text-slate-800">United States</dd>
+                <dd className="font-medium text-slate-800">{BUSINESS_LOCATION}</dd>
               </div>
             </dl>
 

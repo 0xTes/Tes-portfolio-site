@@ -3,6 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import brandMark from "../assets/branding/td-mark.webp";
+import { BUSINESS_LOCATION, BUSINESS_PHONE } from "../lib/site";
 
 const navLinks = [
   { label: "About", to: "/#about" },
@@ -73,7 +74,7 @@ export default function Navbar() {
         className="sticky top-0 z-50 w-full border-b border-white/40 bg-white/80 shadow-md backdrop-blur-2xl transition-all duration-300"
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-5 lg:px-8">
-          <div className="flex items-center gap-4">
+          <div className="flex min-w-0 items-center gap-4">
             <Link
               to="/"
               aria-label="Teslim Digital logo — return to homepage"
@@ -81,13 +82,24 @@ export default function Navbar() {
             >
               <img src={brandMark} alt="" className="h-10 w-10 object-contain" />
             </Link>
-            <Link
-              to="/"
-              aria-label="Teslim — return to homepage"
-              className="rounded-md text-xl font-semibold text-gray-900 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
-            >
-              Teslim
-            </Link>
+            <div className="flex min-w-0 flex-col items-start leading-tight">
+              <Link
+                to="/"
+                aria-label="Teslim — return to homepage"
+                className="rounded-md text-xl font-semibold text-gray-900 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+              >
+                Teslim
+              </Link>
+              <span className="mt-1 text-[11px] text-gray-600 sm:text-xs">
+                <span aria-hidden="true">📍 </span>{BUSINESS_LOCATION}
+              </span>
+              <a
+                href={`tel:+${BUSINESS_PHONE.replace(/\D/g, "")}`}
+                className="mt-0.5 rounded-sm text-[11px] text-gray-700 transition-colors hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 sm:text-xs"
+              >
+                <span aria-hidden="true">☎ </span>{BUSINESS_PHONE}
+              </a>
+            </div>
           </div>
 
           <div className="hidden items-center gap-6 lg:gap-8 md:flex">

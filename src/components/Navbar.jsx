@@ -3,7 +3,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import brandMark from "../assets/branding/td-mark.webp";
-import { BUSINESS_LOCATION, BUSINESS_PHONE } from "../lib/site";
+import { BUSINESS_COVERAGE, BUSINESS_PHONE } from "../lib/site";
 
 const navLinks = [
   { label: "About", to: "/#about" },
@@ -90,12 +90,12 @@ export default function Navbar() {
               >
                 Teslim
               </Link>
-              <span className="mt-1 text-[11px] text-gray-600 sm:text-xs">
-                <span aria-hidden="true">📍 </span>{BUSINESS_LOCATION}
+              <span className="mt-1 text-[11px] font-semibold text-gray-700 sm:text-xs">
+                {BUSINESS_COVERAGE}
               </span>
               <a
                 href={`tel:+${BUSINESS_PHONE.replace(/\D/g, "")}`}
-                className="mt-0.5 rounded-sm text-[11px] text-gray-700 transition-colors hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 sm:text-xs"
+                className="mt-0.5 rounded-sm text-[11px] font-semibold text-gray-700 transition-colors hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 sm:text-xs"
               >
                 <span aria-hidden="true">☎ </span>{BUSINESS_PHONE}
               </a>

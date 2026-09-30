@@ -2,7 +2,7 @@ import { motion, useReducedMotion } from "framer-motion";
 
 import {
   BOOKING_URL,
-  BUSINESS_LOCATION,
+  BUSINESS_COVERAGE,
   BUSINESS_PHONE,
   CONTACT_EMAIL,
 } from "../lib/site";
@@ -16,7 +16,7 @@ const emailContact = {
 };
 
 const phoneContact = {
-  label: "Phone",
+  label: "PHONE/TEXT",
   value: BUSINESS_PHONE,
   href: `tel:+${BUSINESS_PHONE.replace(/\D/g, "")}`,
 };
@@ -115,7 +115,7 @@ export default function LetsTalk({ className = "" }) {
                 <dd>
                   <a
                     href={phoneContact.href}
-                    className="break-anywhere rounded-sm font-medium text-slate-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+                    className="break-anywhere rounded-sm font-semibold text-slate-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
                   >
                     {phoneContact.value}
                   </a>
@@ -123,9 +123,9 @@ export default function LetsTalk({ className = "" }) {
               </div>
               <div className="min-w-0">
                 <dt className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
-                  Location
+                  LOCATION / COVERAGE
                 </dt>
-                <dd className="font-medium text-slate-800">{BUSINESS_LOCATION}</dd>
+                <dd className="font-semibold text-slate-800">{BUSINESS_COVERAGE}</dd>
               </div>
             </dl>
 

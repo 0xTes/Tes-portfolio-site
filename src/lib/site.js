@@ -9,6 +9,8 @@ export const STORE_URL = "https://teslimdigital.shop";
 
 export const CONTACT_EMAIL = "hello@teslim.digital";
 export const SUPPORT_EMAIL = "support@teslim.digital";
+export const BUSINESS_COVERAGE = "🌐 Remote-first · Worldwide";
+export const BUSINESS_PHONE = "(1)-919-528-7092";
 
 export function absoluteUrl(path = "/") {
   return new URL(path, `${SITE_URL}/`).toString();

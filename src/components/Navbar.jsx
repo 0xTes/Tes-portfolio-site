@@ -6,8 +6,8 @@ import brandMark from "../assets/branding/td-mark.webp";
 import { BUSINESS_COVERAGE, BUSINESS_PHONE } from "../lib/site";
 
 const navLinks = [
-  { label: "About", to: "/#about" },
-  { label: "Services", to: "/#services" },
+  { label: "Home", to: "/" },
+  { label: "About", to: "/about" },
   { label: "Work", to: "/work" },
   { label: "Blog", to: "/blog" },
   { label: "Contact", to: "/#contact" },

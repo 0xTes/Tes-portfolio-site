@@ -2,8 +2,8 @@ import { STORE_URL, SUPPORT_EMAIL } from "../lib/site";
 import horizontalLogo from "../assets/branding/teslim-digital-horizontal.webp";
 
 const navigationLinks = [
-  { label: "About", href: "/#about" },
-  { label: "Services", href: "/#services" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/about#services" },
   { label: "Work", href: "/work" },
   { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/#contact" },

@@ -1,10 +1,45 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "react-router-dom";
 
+import voltcoreMontage from "../assets/featured-work/voltcore-montage.webp";
+import economicalMontage from "../assets/featured-work/economical-solutions-montage.webp";
 import { caseStudies } from "../content/caseStudies";
 
-const featuredProjects = caseStudies.slice(0, 3);
-const DEFAULT_NDA_BLUR_PX = 5;
+const economicalCaseStudy = caseStudies.find(
+  (caseStudy) => caseStudy.name === "Economical Solutions LLC",
+);
+
+const featuredProjects = [
+  {
+    id: "voltcore",
+    name: "VoltCore",
+    image: voltcoreMontage,
+    width: 1448,
+    height: 1086,
+    alt: "VoltCore montage showing desktop and mobile views of the multilingual ecommerce interface.",
+    capabilities: [
+      "Website design",
+      "Responsive frontend",
+      "Multilingual UX",
+      "Ecommerce",
+    ],
+  },
+  {
+    id: "economical-solutions",
+    name: economicalCaseStudy.name,
+    image: economicalMontage,
+    width: 1600,
+    height: 1200,
+    alt: "Economical Solutions LLC montage showing desktop and mobile views of the ecommerce, resources, and account experience.",
+    capabilities: [
+      "Website redesign",
+      "Responsive frontend",
+      "Digital Product",
+      "Ecommerce",
+      "Digital Marketing",
+    ],
+  },
+];
 
 export default function FeaturedWork() {
   const shouldReduceMotion = useReducedMotion();
@@ -41,62 +76,58 @@ export default function FeaturedWork() {
           </p>
         </motion.div>
 
-        <div className="mt-14 grid min-w-0 grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {featuredProjects.map((caseStudy, index) => {
-            const blurPx = caseStudy.private
-              ? caseStudy.blurAmount ?? DEFAULT_NDA_BLUR_PX
-              : 0;
-
-            return (
-              <motion.article
-                key={caseStudy.name}
-                aria-labelledby={`featured-project-${index}-heading`}
-                initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{
-                  duration: shouldReduceMotion ? 0 : 0.6,
-                  delay: shouldReduceMotion ? 0 : index * 0.12,
-                  ease: "easeOut",
-                }}
-                className="glass-card min-w-0 overflow-hidden rounded-[28px]"
-              >
-                <div className="overflow-hidden border-b border-slate-200/80 bg-white">
-                  <img
-                    src={caseStudy.image}
-                    alt={`Supporting project screen for ${caseStudy.name}`}
-                    loading="lazy"
-                    decoding="async"
-                    draggable="false"
-                    onContextMenu={(event) => event.preventDefault()}
-                    className="aspect-video w-full object-cover"
-                    style={blurPx ? { filter: `blur(${blurPx}px)` } : undefined}
-                  />
-                </div>
-                <div className="min-w-0 p-6">
-                  <div className="flex min-w-0 flex-wrap items-center gap-3">
-                    <p className="text-sm font-medium text-teal-700">
-                      {caseStudy.industry}
-                    </p>
-                    {caseStudy.private && (
-                      <span className="max-w-full rounded-full bg-slate-900 px-3 py-1.5 text-xs font-semibold text-white">
-                        Private client deployment
-                      </span>
-                    )}
-                  </div>
-                  <h3
-                    id={`featured-project-${index}-heading`}
-                    className="mt-4 text-2xl font-semibold leading-tight text-slate-900"
-                  >
-                    {caseStudy.name}
-                  </h3>
-                  <p className="mt-4 text-[1.0625rem] leading-relaxed text-slate-600">
-                    {caseStudy.strategicGoal}
-                  </p>
-                </div>
-              </motion.article>
-            );
-          })}
+        <div className="mt-14 grid min-w-0 grid-cols-1 gap-8 xl:grid-cols-2">
+          {featuredProjects.map((project, index) => (
+            <motion.article
+              key={project.id}
+              aria-labelledby={`${project.id}-featured-heading`}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: shouldReduceMotion ? 0 : 0.6,
+                delay: shouldReduceMotion ? 0 : index * 0.12,
+                ease: "easeOut",
+              }}
+              className="glass-card min-w-0 overflow-hidden rounded-[28px]"
+            >
+              <div className="overflow-hidden border-b border-slate-200/80 bg-white">
+                <img
+                  src={project.image}
+                  alt={project.alt}
+                  width={project.width}
+                  height={project.height}
+                  loading="lazy"
+                  decoding="async"
+                  draggable="false"
+                  onContextMenu={(event) => event.preventDefault()}
+                  className="h-auto w-full object-contain"
+                />
+              </div>
+              <div className="min-w-0 p-6 sm:p-8">
+                <h3
+                  id={`${project.id}-featured-heading`}
+                  className="text-2xl font-semibold leading-tight text-slate-900 md:text-3xl"
+                >
+                  {project.name}
+                </h3>
+                <ul className="mt-4 flex min-w-0 flex-wrap gap-x-5 gap-y-2 text-[1.0625rem] leading-relaxed text-slate-600">
+                  {project.capabilities.map((capability) => (
+                    <li
+                      key={capability}
+                      className="flex min-w-0 items-baseline gap-2"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="h-1 w-1 shrink-0 self-center rounded-full bg-teal-600"
+                      />
+                      <span>{capability}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.article>
+          ))}
         </div>
 
         <Link to="/work" className="button-primary mt-10">

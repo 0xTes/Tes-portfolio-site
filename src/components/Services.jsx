@@ -1,30 +1,50 @@
 import { motion, useReducedMotion } from "framer-motion";
 
-// ── Services Data ─────────────────────────────────────────────────────────────
 const services = [
   {
-    title: "Strategic Websites",
+    id: "build",
+    label: "BUILD",
+    title: "Strategic websites & digital platforms",
     description:
-      "Modern, responsive websites built to establish credibility, communicate your value, and convert visitors into customers. Every website is designed around your business goals—not just aesthetics.",
+      "Build or improve the digital foundation customers interact with\u2014from clear, responsive websites to ecommerce and digital experiences designed around real business goals.",
+    capabilities: [
+      "Strategic Websites",
+      "Website Redesign",
+      "Responsive Frontend",
+      "Digital Platforms",
+      "Ecommerce",
+    ],
   },
   {
-    title: "Intelligent Systems",
+    id: "grow",
+    label: "GROW",
+    title: "Digital marketing & customer acquisition",
     description:
-      "Custom digital systems that simplify operations, improve efficiency, and support better decision-making. From internal tools to business workflows, every solution is built for long-term scalability.",
+      "Strengthen how the business is discovered, reaches the right audience, and creates more structured opportunities for customer acquisition.",
+    capabilities: [
+      "Social Media Marketing",
+      "SEO",
+      "Lead Generation",
+      "Digital Marketing",
+      "Google Ads Management",
+    ],
   },
   {
-    title: "AI & Automation",
+    id: "automate",
+    label: "AUTOMATE",
+    title: "AI automation & intelligent systems",
     description:
-      "Automate repetitive tasks, streamline processes, and leverage AI to help your business operate smarter. The focus is on saving time, reducing manual work, and increasing productivity.",
-  },
-  {
-    title: "Technology Strategy",
-    description:
-      "Technology guidance that helps businesses make informed decisions, prioritize the right solutions, and build a roadmap for sustainable digital growth with confidence.",
+      "Improve repetitive or fragmented business processes with practical automation, connected workflows, and systems designed around how the business actually operates.",
+    capabilities: [
+      "AI & Automation",
+      "Intelligent Systems",
+      "Workflow Automation",
+      "Operational Tools",
+      "Technology Strategy",
+    ],
   },
 ];
 
-// ── Component ─────────────────────────────────────────────────────────────────
 function Services() {
   const shouldReduceMotion = useReducedMotion();
 
@@ -32,82 +52,89 @@ function Services() {
     <section
       id="services"
       aria-labelledby="services-heading"
-      className="py-24 md:py-32"
+      className="pt-10 pb-16 sm:pt-12 sm:pb-20 lg:pt-16 lg:pb-24"
     >
       <div className="section min-w-0">
-        {/* Section Heading */}
         <motion.div
-          initial={
-            shouldReduceMotion
-              ? { opacity: 0 }
-              : { opacity: 0, y: 30 }
-          }
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{
-            duration: 0.6,
+            duration: shouldReduceMotion ? 0 : 0.6,
             ease: "easeOut",
           }}
           className="min-w-0 max-w-3xl"
         >
-          <p className="mb-6 text-sm uppercase tracking-[0.2em] text-teal-600">
-            Services
+          <p className="mb-5 text-sm uppercase tracking-normal text-teal-700">
+            SERVICES
           </p>
 
           <h2
             id="services-heading"
-            className="min-w-0 break-words text-4xl font-semibold leading-tight text-slate-900 md:text-5xl"
+            className="text-3xl font-semibold leading-tight text-slate-900 md:text-4xl"
           >
-            Technology services built to help your business grow smarter.
+            Three ways Teslim Digital helps businesses move forward.
           </h2>
 
-          <p className="mt-6 min-w-0 break-words text-lg leading-relaxed text-slate-600">
-            Every business has unique challenges and opportunities. That's why
-            I focus on practical technology solutions tailored to your goals.
-            Whether you're building your online presence, improving operations,
-            or preparing for future growth, every service is designed to create
-            measurable business value.
+          <p className="mt-5 text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
+            The work is organized around three connected needs: building stronger
+            digital foundations, growing customer acquisition, and improving
+            operations through practical automation.
           </p>
         </motion.div>
 
-        {/* Services Grid */}
-        <div className="mt-14 grid min-w-0 gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={
-                shouldReduceMotion
-                  ? { opacity: 0 }
-                  : { opacity: 0, y: 30 }
-              }
+        <div className="mt-10 min-w-0 md:mt-12">
+          {services.map((service) => (
+            <motion.article
+              key={service.id}
+              aria-labelledby={`${service.id}-service-heading`}
+              initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{
-                once: true,
-                amount: 0.2,
-              }}
+              viewport={{ once: true, amount: 0.2 }}
               transition={{
-                delay: index * 0.12,
-                duration: 0.6,
+                duration: shouldReduceMotion ? 0 : 0.6,
                 ease: "easeOut",
               }}
-              className="glass-card min-w-0 min-h-[250px] rounded-[28px] p-7 transition duration-300 hover:-translate-y-1 hover:shadow-2xl sm:p-10 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+              className="grid min-w-0 gap-6 border-t border-slate-300/80 py-8 md:py-10 lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] lg:gap-16"
             >
-              <div
-                className="mb-6 h-1 w-12 rounded-full bg-teal-500"
-                aria-hidden="true"
-              />
-
-              <h3 className="mb-4 min-w-0 break-words text-xl font-semibold text-slate-900">
-                {service.title}
-              </h3>
-
-              <p className="min-w-0 break-words text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
-                {service.description}
-              </p>
-            </motion.div>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold uppercase tracking-normal text-teal-700">
+                  {service.label}
+                </p>
+                <h3
+                  id={`${service.id}-service-heading`}
+                  className="mt-3 text-2xl font-semibold leading-tight text-slate-900 md:text-3xl"
+                >
+                  {service.title}
+                </h3>
+                <p className="mt-4 max-w-xl text-[1.0625rem] leading-relaxed text-slate-600">
+                  {service.description}
+                </p>
+              </div>
+              <div className="min-w-0 lg:pt-9">
+                <p className="text-sm font-semibold text-slate-600">
+                  Available capabilities
+                </p>
+                <ul
+                  role="list"
+                  aria-label={`${service.label} capabilities`}
+                  className="mt-4 flex min-w-0 flex-wrap gap-x-6 gap-y-2 text-base leading-relaxed text-slate-600 lg:grid"
+                >
+                  {service.capabilities.map((capability) => (
+                    <li
+                      key={capability}
+                      className="flex min-w-0 max-w-full items-baseline gap-2"
+                    >
+                      <span
+                        aria-hidden="true"
+                        className="h-1 w-1 shrink-0 self-center rounded-full bg-teal-700"
+                      />
+                      <span>{capability}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>

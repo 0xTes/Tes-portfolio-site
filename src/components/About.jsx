@@ -7,72 +7,75 @@ function About() {
     <section
       id="about"
       aria-labelledby="about-heading"
-      className="py-24 md:py-32"
+      className="pt-16 pb-10 sm:pt-20 sm:pb-12 lg:pt-24 lg:pb-16"
     >
-      <div className="section grid min-w-0 items-center gap-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-        {/* Left: Section Heading */}
+      <div className="section min-w-0">
         <motion.div
-          initial={
-            shouldReduceMotion
-              ? { opacity: 0 }
-              : { opacity: 0, x: -40 }
-          }
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{
-            duration: 0.6,
+            duration: shouldReduceMotion ? 0 : 0.6,
             ease: "easeOut",
           }}
-          className="min-w-0"
+          className="min-w-0 max-w-5xl"
         >
-          <p className="mb-5 text-sm uppercase tracking-[0.2em] text-teal-600">
-            About
+          <p className="mb-6 text-sm uppercase tracking-normal text-teal-700">
+            ABOUT TESLIM DIGITAL
           </p>
 
-          <h2
+          <h1
             id="about-heading"
-            className="min-w-0 break-words text-4xl font-semibold leading-tight text-slate-900 md:text-5xl"
+            className="max-w-4xl text-[2rem] font-semibold leading-tight text-slate-900 sm:text-4xl md:text-5xl"
           >
-            Building technology that works for your business—not the other way
-            around.
-          </h2>
+            Digital solutions should solve business problems&mdash;not create
+            new ones.
+          </h1>
+
+          <p className="mt-6 max-w-3xl text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
+            Teslim Digital is a founder-led digital solutions business led by
+            Teslim Yussuph, helping businesses strengthen their digital presence,
+            improve how they attract customers, and simplify the systems behind
+            their operations.
+          </p>
+          <p className="mt-5 max-w-3xl text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
+            The work spans strategic websites, digital growth, and practical
+            automation, but the starting point is always the same: understand
+            the business need before choosing the technology.
+          </p>
         </motion.div>
 
-        {/* Right: About Card */}
         <motion.div
-          initial={
-            shouldReduceMotion
-              ? { opacity: 0 }
-              : { opacity: 0, x: 40 }
-          }
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{
-            once: true,
-            amount: 0.2,
-          }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{
-            duration: 0.6,
+            duration: shouldReduceMotion ? 0 : 0.6,
             ease: "easeOut",
           }}
-          className="glass-card min-w-0 rounded-[32px] p-7 transition duration-300 hover:-translate-y-1 hover:shadow-2xl sm:p-10 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+          className="mt-10 grid min-w-0 gap-8 border-t border-slate-300/80 pt-8 md:mt-12 md:pt-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.7fr)] lg:gap-16"
         >
-          <p className="min-w-0 break-words text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
-            Technology should simplify operations, support growth,
-            and create measurable value—not introduce unnecessary complexity.
-            Every project begins with understanding your business, your goals,
-            and the challenges standing in the way of sustainable growth.
-          </p>
-
-          <p className="mt-6 min-w-0 break-words text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
-            From strategy and planning to websites, intelligent systems, and
-            automation, I build digital solutions that are reliable,
-            maintainable, and designed to evolve alongside your business. My
-            focus isn't just delivering a project—it's creating technology that
-            continues to generate value long after launch.
-          </p>
+          <div className="min-w-0">
+            <p className="text-[1.0625rem] font-semibold text-slate-900">
+              Teslim Yussuph
+            </p>
+            <p className="mt-2 text-sm text-slate-600">
+              Founder, Teslim Digital
+            </p>
+          </div>
+          <div className="min-w-0 max-w-3xl">
+            <p className="text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
+              The goal is not to add technology for its own sake. It is to
+              identify where a better website, stronger acquisition strategy,
+              clearer digital experience, or smarter workflow can remove friction
+              and create a more useful foundation for growth.
+            </p>
+            <p className="mt-5 text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
+              Projects are approached with an emphasis on clarity,
+              maintainability, and solutions that make sense for the business
+              using them&mdash;not unnecessary complexity.
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

@@ -1,5 +1,6 @@
 import Hero from "../components/Hero";
 import FeaturedWork from "../components/FeaturedWork";
+import Capabilities from "../components/Capabilities";
 import WebsitePackages from "../components/WebsitePackages";
 import LetsTalk from "../components/LetsTalk";
 import Newsletter from "../components/Newsletter";
@@ -13,6 +14,7 @@ export default function Home() {
       <PageShell>
         <Hero />
         <FeaturedWork />
+        <Capabilities />
         <WebsitePackages />
         <LetsTalk className="mt-8 md:mt-12" />
         <Newsletter className="mt-8 md:mt-12" />

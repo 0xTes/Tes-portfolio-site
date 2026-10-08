@@ -2,6 +2,7 @@ import Hero from "../components/Hero";
 import FeaturedWork from "../components/FeaturedWork";
 import Capabilities from "../components/Capabilities";
 import WebsitePackages from "../components/WebsitePackages";
+import GrowthAutomationServices from "../components/GrowthAutomationServices";
 import LetsTalk from "../components/LetsTalk";
 import Newsletter from "../components/Newsletter";
 import PageShell from "../components/PageShell";
@@ -16,6 +17,7 @@ export default function Home() {
         <FeaturedWork />
         <Capabilities />
         <WebsitePackages />
+        <GrowthAutomationServices />
         <LetsTalk className="mt-8 md:mt-12" />
         <Newsletter className="mt-8 md:mt-12" />
       </PageShell>

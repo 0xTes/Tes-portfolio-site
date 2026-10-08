@@ -112,7 +112,11 @@ export default function CaseStudyCard({ caseStudy, index }) {
           decoding="async"
           draggable="false"
           onContextMenu={(event) => event.preventDefault()}
-          className="h-60 w-full object-cover transition duration-700 hover:scale-[1.03] motion-reduce:transition-none motion-reduce:hover:scale-100 sm:h-72"
+          className={
+            caseStudy.imagePresentation === "contain"
+              ? "h-auto w-full object-contain transition duration-700 motion-reduce:transition-none"
+              : "h-60 w-full object-cover transition duration-700 hover:scale-[1.03] motion-reduce:transition-none motion-reduce:hover:scale-100 sm:h-72"
+          }
           style={blurPx ? { filter: `blur(${blurPx}px)` } : undefined}
         />
         <figcaption className="px-5 py-4 text-sm leading-relaxed text-slate-500">

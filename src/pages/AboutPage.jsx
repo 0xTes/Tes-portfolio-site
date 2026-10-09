@@ -1,5 +1,8 @@
 import About from "../components/About";
+import AboutAudience from "../components/AboutAudience";
 import Services from "../components/Services";
+import AboutPartnership from "../components/AboutPartnership";
+import AboutCTA from "../components/AboutCTA";
 import Newsletter from "../components/Newsletter";
 import PageShell from "../components/PageShell";
 import Seo from "../components/Seo";
@@ -14,7 +17,10 @@ export default function AboutPage() {
       />
       <PageShell>
         <About />
+        <AboutAudience />
         <Services />
+        <AboutPartnership />
+        <AboutCTA />
         <Newsletter />
       </PageShell>
     </>

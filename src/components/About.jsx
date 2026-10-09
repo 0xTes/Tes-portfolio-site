@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
+import horizontalLogo from "../assets/branding/teslim-digital-horizontal.webp";
 
 function About() {
   const shouldReduceMotion = useReducedMotion();
@@ -33,10 +34,9 @@ function About() {
           </h1>
 
           <p className="mt-6 max-w-3xl text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
-            Teslim Digital is a founder-led digital solutions business led by
-            Teslim Yussuph, helping businesses strengthen their digital presence,
-            improve how they attract customers, and simplify the systems behind
-            their operations.
+            Teslim Digital is a digital solutions hub helping businesses
+            strengthen their digital presence, improve how they attract
+            customers, and simplify the systems behind their operations.
           </p>
           <p className="mt-5 max-w-3xl text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
             The work spans strategic websites, digital growth, and practical
@@ -55,13 +55,14 @@ function About() {
           }}
           className="mt-10 grid min-w-0 gap-8 border-t border-slate-300/80 pt-8 md:mt-12 md:pt-10 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.7fr)] lg:gap-16"
         >
-          <div className="min-w-0">
-            <p className="text-[1.0625rem] font-semibold text-slate-900">
-              Teslim Yussuph
-            </p>
-            <p className="mt-2 text-sm text-slate-600">
-              Founder, Teslim Digital
-            </p>
+          <div className="min-w-0 max-w-[200px] sm:max-w-[220px] lg:max-w-[240px]">
+            <img
+              src={horizontalLogo}
+              alt="Teslim Digital"
+              width={1200}
+              height={391}
+              className="h-auto w-full object-contain brightness-0"
+            />
           </div>
           <div className="min-w-0 max-w-3xl">
             <p className="text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">

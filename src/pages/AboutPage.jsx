@@ -1,5 +1,6 @@
 import About from "../components/About";
 import Services from "../components/Services";
+import Newsletter from "../components/Newsletter";
 import PageShell from "../components/PageShell";
 import Seo from "../components/Seo";
 
@@ -14,6 +15,7 @@ export default function AboutPage() {
       <PageShell>
         <About />
         <Services />
+        <Newsletter />
       </PageShell>
     </>
   );

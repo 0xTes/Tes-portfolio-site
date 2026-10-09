@@ -21,7 +21,7 @@ export default function AboutPage() {
         <Services />
         <AboutPartnership />
         <AboutCTA />
-        <Newsletter />
+        <Newsletter className="pb-12! md:pb-16!" />
       </PageShell>
     </>
   );

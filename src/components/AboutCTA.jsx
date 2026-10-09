@@ -65,7 +65,7 @@ export default function AboutCTA() {
             <Link
               to="/work"
               onClick={handleWorkNavigation}
-              className="button-primary w-full sm:w-auto"
+              className="inline-flex min-h-[52px] w-full max-w-full items-center justify-center rounded-full border border-teal-700/80 bg-transparent px-7 py-3.5 text-center font-semibold leading-tight text-teal-700! transition-colors duration-200 hover:border-teal-700 hover:bg-teal-700/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-700 motion-reduce:transition-none sm:w-auto"
             >
               View Selected Work
             </Link>

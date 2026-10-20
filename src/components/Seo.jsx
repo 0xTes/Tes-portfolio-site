@@ -1,11 +1,56 @@
-import { Helmet } from "react-helmet-async";
+import { useEffect } from "react";
 
 import { absoluteUrl } from "../lib/site";
 
 const DEFAULT_TITLE =
-  "Teslim Digital | AI Automation, Digital Transformation & Strategic Websites";
+  "Teslim Digital | Websites, Growth & Automation";
 const DEFAULT_DESCRIPTION =
-  "Teslim Digital helps growing businesses remove bottlenecks with strategic websites, intelligent systems, and practical AI automation.";
+  "Teslim Digital helps businesses build stronger digital foundations, grow customer acquisition, and improve operations through practical automation.";
+const DEFAULT_IMAGE_ALT =
+  "Teslim Digital \u2014 websites, digital growth, and automation";
+
+const organizationId = absoluteUrl("/#organization");
+const homepageUrl = absoluteUrl("/");
+const STRUCTURED_DATA = JSON.stringify([
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": organizationId,
+    name: "Teslim Digital",
+    url: homepageUrl,
+    logo: {
+      "@type": "ImageObject",
+      url: absoluteUrl("/td-mark.png"),
+    },
+    description: DEFAULT_DESCRIPTION,
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": absoluteUrl("/#website"),
+    name: "Teslim Digital",
+    url: homepageUrl,
+    publisher: { "@id": organizationId },
+  },
+]);
+
+function syncHeadNode(key, selector, tagName, attributes, textContent) {
+  const matches = Array.from(document.head.querySelectorAll(selector));
+  const node =
+    matches.find((candidate) => candidate.dataset.seo === key) ||
+    matches[0] ||
+    document.createElement(tagName);
+
+  node.dataset.seo = key;
+  for (const [name, value] of Object.entries(attributes)) {
+    node.setAttribute(name, value);
+  }
+  if (textContent !== undefined) node.textContent = textContent;
+  if (!node.isConnected) document.head.appendChild(node);
+  for (const duplicate of matches) {
+    if (duplicate !== node) duplicate.remove();
+  }
+}
 
 export default function Seo({
   title = DEFAULT_TITLE,
@@ -13,59 +58,49 @@ export default function Seo({
   path = "/",
   type = "website",
   image = "/og-image.png",
-  imageAlt = "Teslim Digital - strategic websites, systems, and AI automation",
+  imageAlt = DEFAULT_IMAGE_ALT,
 }) {
   const canonicalUrl = absoluteUrl(path);
   const imageUrl = absoluteUrl(image);
-  const organizationId = absoluteUrl("/#organization");
-  const websiteId = absoluteUrl("/#website");
-  const homepageUrl = absoluteUrl("/");
-  const structuredData = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "@id": organizationId,
-      name: "Teslim Digital",
-      url: homepageUrl,
-      logo: {
-        "@type": "ImageObject",
-        url: absoluteUrl("/td-mark.png"),
-      },
-      description: DEFAULT_DESCRIPTION,
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "@id": websiteId,
-      name: "Teslim Digital",
-      url: homepageUrl,
-      publisher: { "@id": organizationId },
-    },
-  ];
 
-  return (
-    <Helmet>
-      <title>{title}</title>
-      <meta name="description" content={description} />
-      <link rel="canonical" href={canonicalUrl} />
+  useEffect(() => {
+    syncHeadNode("title", "title", "title", {}, title);
+    syncHeadNode("canonical", 'link[rel="canonical"]', "link", {
+      rel: "canonical",
+      href: canonicalUrl,
+    });
 
-      <meta property="og:title" content={title} />
-      <meta property="og:description" content={description} />
-      <meta property="og:image" content={imageUrl} />
-      <meta property="og:image:alt" content={imageAlt} />
-      <meta property="og:url" content={canonicalUrl} />
-      <meta property="og:type" content={type} />
-      <meta property="og:site_name" content="Teslim Digital" />
+    const metaTags = [
+      ["description", "name", "description", description],
+      ["og-title", "property", "og:title", title],
+      ["og-description", "property", "og:description", description],
+      ["og-image", "property", "og:image", imageUrl],
+      ["og-image-alt", "property", "og:image:alt", imageAlt],
+      ["og-url", "property", "og:url", canonicalUrl],
+      ["og-type", "property", "og:type", type],
+      ["og-site-name", "property", "og:site_name", "Teslim Digital"],
+      ["twitter-card", "name", "twitter:card", "summary_large_image"],
+      ["twitter-title", "name", "twitter:title", title],
+      ["twitter-description", "name", "twitter:description", description],
+      ["twitter-image", "name", "twitter:image", imageUrl],
+      ["twitter-image-alt", "name", "twitter:image:alt", imageAlt],
+    ];
 
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:title" content={title} />
-      <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={imageUrl} />
-      <meta name="twitter:image:alt" content={imageAlt} />
+    for (const [key, attribute, name, content] of metaTags) {
+      syncHeadNode(key, `meta[${attribute}="${name}"]`, "meta", {
+        [attribute]: name,
+        content,
+      });
+    }
 
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData)}
-      </script>
-    </Helmet>
-  );
+    syncHeadNode(
+      "structured-data",
+      'script[data-seo="structured-data"]',
+      "script",
+      { type: "application/ld+json" },
+      STRUCTURED_DATA,
+    );
+  }, [canonicalUrl, description, imageAlt, imageUrl, title, type]);
+
+  return null;
 }

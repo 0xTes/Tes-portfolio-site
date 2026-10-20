@@ -10,10 +10,9 @@ const navigationLinks = [
 ];
 
 const focusAreas = [
-  "Strategic websites",
-  "Intelligent systems",
-  "AI & automation",
-  "Technology strategy",
+  "BUILD \u2014 Websites & digital platforms",
+  "GROW \u2014 Marketing & customer acquisition",
+  "AUTOMATE \u2014 AI & intelligent systems",
 ];
 
 export default function Footer() {
@@ -29,8 +28,9 @@ export default function Footer() {
               <img src={horizontalLogo} alt="Teslim Digital" className="h-auto w-full" />
             </a>
             <p className="mt-5 max-w-sm text-[1.0625rem] leading-relaxed text-slate-400">
-              Digital systems, strategic websites, and practical AI for
-              businesses ready to remove friction and grow with more clarity.
+              Teslim Digital helps businesses build stronger digital foundations,
+              grow customer acquisition, and improve operations through practical
+              automation.
             </p>
           </div>
 
@@ -104,7 +104,7 @@ export default function Footer() {
               © {new Date().getFullYear()} Teslim Digital. All rights reserved.
             </p>
             <p className="mt-2 text-xs leading-relaxed text-slate-500">
-              AI &amp; Automation - Systems - Websites
+              BUILD &middot; GROW &middot; AUTOMATE
             </p>
             <p className="mt-3 text-sm">
               <a

@@ -91,7 +91,7 @@ export default function Footer() {
             <p className="mt-4 text-sm leading-relaxed text-slate-300">
               Nationwide delivery - Worldwide delivery soon
             </p>
-            <p className="mt-2 text-xs leading-relaxed text-slate-500">
+            <p className="mt-2 text-xs leading-relaxed text-slate-400">
               Opens my Store in a new tab.
             </p>
           </div>
@@ -103,7 +103,7 @@ export default function Footer() {
             <p className="text-sm font-medium text-slate-300">
               © {new Date().getFullYear()} Teslim Digital. All rights reserved.
             </p>
-            <p className="mt-2 text-xs leading-relaxed text-slate-500">
+            <p className="mt-2 text-xs leading-relaxed text-slate-400">
               BUILD &middot; GROW &middot; AUTOMATE
             </p>
             <p className="mt-3 text-sm">

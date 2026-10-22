@@ -61,7 +61,7 @@ export default function FeaturedWork() {
           }}
           className="max-w-3xl"
         >
-          <p className="mb-6 text-sm uppercase tracking-[0.2em] text-teal-600">
+          <p className="mb-6 text-sm uppercase tracking-[0.2em] text-teal-700">
             FEATURED WORK
           </p>
           <h2

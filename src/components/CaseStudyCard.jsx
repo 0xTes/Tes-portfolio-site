@@ -35,7 +35,7 @@ export default function CaseStudyCard({ caseStudy, index }) {
 
       <dl className="mt-8 grid min-w-0 gap-4 sm:grid-cols-3">
         <div className="min-w-0 rounded-2xl border border-slate-200/80 bg-white/50 p-4">
-          <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+          <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
             Client
           </dt>
           <dd className="mt-2 text-sm font-medium leading-relaxed text-slate-800">
@@ -43,7 +43,7 @@ export default function CaseStudyCard({ caseStudy, index }) {
           </dd>
         </div>
         <div className="min-w-0 rounded-2xl border border-slate-200/80 bg-white/50 p-4">
-          <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+          <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
             Industry
           </dt>
           <dd className="mt-2 text-sm font-medium leading-relaxed text-slate-800">
@@ -51,7 +51,7 @@ export default function CaseStudyCard({ caseStudy, index }) {
           </dd>
         </div>
         <div className="min-w-0 rounded-2xl border border-slate-200/80 bg-white/50 p-4">
-          <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
+          <dt className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-600">
             Service
           </dt>
           <dd className="mt-2 text-sm font-medium leading-relaxed text-slate-800">

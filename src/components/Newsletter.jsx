@@ -56,7 +56,7 @@ export default function Newsletter({ className = "" }) {
               required
               aria-describedby={status ? statusId : undefined}
               placeholder="Enter your email address"
-              className="min-w-0 flex-1 rounded-[18px] border-0 bg-transparent px-5 py-3.5 text-[1.0625rem] text-slate-900 outline-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-teal-600"
+              className="min-w-0 flex-1 rounded-[18px] border-0 bg-transparent px-5 py-3.5 text-[1.0625rem] text-slate-900 outline-none placeholder:text-slate-600 focus-visible:ring-2 focus-visible:ring-teal-600"
             />
             <button type="submit" className="button-primary shrink-0 sm:px-7">
               Subscribe

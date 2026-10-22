@@ -25,13 +25,15 @@ export default function Navbar() {
   }
 
   useEffect(() => {
+    if (!open) return;
+
     function handleEscape(event) {
       if (event.key === "Escape") closeMenu(true);
     }
 
     window.addEventListener("keydown", handleEscape);
     return () => window.removeEventListener("keydown", handleEscape);
-  }, []);
+  }, [open]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width: 768px)");
@@ -78,7 +80,7 @@ export default function Navbar() {
             <Link
               to="/"
               aria-label="Teslim Digital logo — return to homepage"
-              className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+              className="rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-2"
             >
               <img src={brandMark} alt="" className="h-10 w-10 object-contain" />
             </Link>
@@ -86,7 +88,7 @@ export default function Navbar() {
               <Link
                 to="/"
                 aria-label="Teslim — return to homepage"
-                className="rounded-md text-xl font-semibold text-gray-900 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+                className="rounded-md text-xl font-semibold text-gray-900 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-2"
               >
                 Teslim
               </Link>
@@ -95,7 +97,7 @@ export default function Navbar() {
               </span>
               <a
                 href={`tel:+${BUSINESS_PHONE.replace(/\D/g, "")}`}
-                className="mt-0.5 rounded-sm text-[11px] font-semibold text-gray-700 transition-colors hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 sm:text-xs"
+                className="mt-0.5 rounded-sm text-[11px] font-semibold text-gray-700 transition-colors hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-2 sm:text-xs"
               >
                 <span aria-hidden="true">☎ </span>{BUSINESS_PHONE}
               </a>
@@ -107,7 +109,7 @@ export default function Navbar() {
               <Link
                 key={link.label}
                 to={link.to}
-                className="rounded-lg px-2 py-2 text-gray-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+                className="rounded-lg px-2 py-2 text-gray-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-2"
               >
                 {link.label}
               </Link>
@@ -127,25 +129,25 @@ export default function Navbar() {
             aria-label={open ? "Close navigation menu" : "Open navigation menu"}
             aria-expanded={open}
             aria-controls="mobile-navigation"
-            className="relative flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white p-2 shadow-sm transition-colors hover:border-teal-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 md:hidden"
+            className="relative flex h-11 w-11 items-center justify-center rounded-full border border-slate-200 bg-white p-2 shadow-sm transition-colors hover:border-teal-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-2 md:hidden"
             onClick={() => setOpen((previous) => !previous)}
           >
             <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
             <span
               aria-hidden="true"
-              className={`absolute h-0.5 w-5 rounded-full bg-slate-900 transition-transform duration-200 ${
+              className={`absolute h-0.5 w-5 rounded-full bg-slate-900 transition-transform duration-200 motion-reduce:transition-none ${
                 open ? "rotate-45" : "-translate-y-1.5"
               }`}
             />
             <span
               aria-hidden="true"
-              className={`absolute h-0.5 w-5 rounded-full bg-slate-900 transition-opacity duration-200 ${
+              className={`absolute h-0.5 w-5 rounded-full bg-slate-900 transition-opacity duration-200 motion-reduce:transition-none ${
                 open ? "opacity-0" : "opacity-100"
               }`}
             />
             <span
               aria-hidden="true"
-              className={`absolute h-0.5 w-5 rounded-full bg-slate-900 transition-transform duration-200 ${
+              className={`absolute h-0.5 w-5 rounded-full bg-slate-900 transition-transform duration-200 motion-reduce:transition-none ${
                 open ? "-rotate-45" : "translate-y-1.5"
               }`}
             />
@@ -159,11 +161,11 @@ export default function Navbar() {
             ref={mobileMenuRef}
             id="mobile-navigation"
             aria-label="Mobile navigation"
-            initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -24 }}
+            initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: -24 }}
             animate={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
             exit={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: -24 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="fixed left-1/2 top-24 z-40 w-[92%] -translate-x-1/2 rounded-3xl border border-white/40 bg-white/95 p-8 shadow-2xl backdrop-blur-2xl md:hidden"
+            transition={{ duration: shouldReduceMotion ? 0 : 0.3, ease: "easeOut" }}
+            className="fixed left-1/2 top-24 z-40 max-h-[calc(100dvh-7rem)] w-[92%] -translate-x-1/2 overflow-y-auto rounded-3xl border border-white/40 bg-white/95 p-8 shadow-2xl backdrop-blur-2xl md:hidden"
           >
             <div className="flex flex-col gap-5">
               {navLinks.map((link) => (
@@ -171,7 +173,7 @@ export default function Navbar() {
                   key={link.label}
                   to={link.to}
                   onClick={() => closeMenu()}
-                  className="rounded-lg px-3 py-2 text-gray-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+                  className="rounded-lg px-3 py-2 text-gray-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-2"
                 >
                   {link.label}
                 </Link>

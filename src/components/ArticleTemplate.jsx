@@ -65,7 +65,7 @@ export default function ArticleTemplate({ article }) {
         <p className="mt-6 max-w-2xl text-lg leading-relaxed text-slate-600">
           {article.description}
         </p>
-        <p className="mt-6 text-sm font-medium text-slate-500">
+        <p className="mt-6 text-sm font-medium text-slate-600">
           <time dateTime={article.publishedAt}>
             {formatDate(article.publishedAt)}
           </time>

@@ -30,11 +30,13 @@ export default function Newsletter({ className = "" }) {
             id={headingId}
             className="mx-auto mt-5 max-w-2xl text-3xl font-semibold leading-tight text-slate-900 sm:text-4xl md:text-[2.75rem]"
           >
-            Get practical ideas for a more effective digital business.
+            Practical ideas for building, growing, and improving your digital
+            business.
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-[1.0625rem] leading-relaxed text-slate-600 md:text-lg">
-            Occasional notes on websites, AI, automation, and the systems that
-            help growing businesses create more room to do their best work.
+            Occasional notes on websites, digital growth, customer acquisition,
+            practical automation, and the systems that help businesses work with
+            more clarity.
           </p>
 
           <form
@@ -54,7 +56,7 @@ export default function Newsletter({ className = "" }) {
               required
               aria-describedby={status ? statusId : undefined}
               placeholder="Enter your email address"
-              className="min-w-0 flex-1 rounded-[18px] border-0 bg-transparent px-5 py-3.5 text-[1.0625rem] text-slate-900 outline-none placeholder:text-slate-400 focus-visible:ring-2 focus-visible:ring-teal-600"
+              className="min-w-0 flex-1 rounded-[18px] border-0 bg-transparent px-5 py-3.5 text-[1.0625rem] text-slate-900 outline-none placeholder:text-slate-600 focus-visible:ring-2 focus-visible:ring-teal-600"
             />
             <button type="submit" className="button-primary shrink-0 sm:px-7">
               Subscribe

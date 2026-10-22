@@ -28,11 +28,6 @@ const socialLinks = [
     href: "https://www.instagram.com/teslim.digital_",
   },
   {
-    label: "Snapchat",
-    icon: "snapchat",
-    href: "https://www.snapchat.com/@teslim.digital",
-  },
-  {
     label: "Substack",
     icon: "substack",
     href: "https://substack.com/@teslimdigital",
@@ -41,11 +36,6 @@ const socialLinks = [
     label: "TikTok",
     icon: "tiktok",
     href: "https://www.tiktok.com/@teslim.digital",
-  },
-  {
-    label: "X",
-    icon: "x",
-    href: "https://x.com/teslim_digital",
   },
 ];
 
@@ -60,14 +50,14 @@ export default function LetsTalk({ className = "" }) {
     >
       <div className="section min-w-0">
         <motion.div
-          initial={shouldReduceMotion ? { opacity: 0 } : { opacity: 0, y: 35 }}
+          initial={shouldReduceMotion ? { opacity: 1 } : { opacity: 0, y: 35 }}
           whileInView={shouldReduceMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.6, ease: "easeOut" }}
           className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]"
         >
           <div className="glass-card min-w-0 rounded-[40px] p-6 sm:p-10 md:p-12">
-            <p className="mb-5 text-sm uppercase tracking-[0.2em] text-teal-600">
+            <p className="mb-5 text-sm uppercase tracking-[0.2em] text-teal-700">
               Available for new projects
             </p>
             <h2
@@ -101,7 +91,7 @@ export default function LetsTalk({ className = "" }) {
                 <dd>
                   <a
                     href={emailContact.href}
-                    className="break-anywhere rounded-sm font-semibold text-slate-800 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+                    className="break-anywhere rounded-sm font-semibold text-slate-800 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-2"
                   >
                     {emailContact.value}
                   </a>
@@ -109,20 +99,20 @@ export default function LetsTalk({ className = "" }) {
                 <p className="mt-1 text-sm text-slate-500">{emailContact.subtitle}</p>
               </div>
               <div className="min-w-0">
-                <dt className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                <dt className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-600">
                   {phoneContact.label}
                 </dt>
                 <dd>
                   <a
                     href={phoneContact.href}
-                    className="break-anywhere rounded-sm font-semibold text-slate-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2"
+                    className="break-anywhere rounded-sm font-semibold text-slate-700 transition-colors duration-200 hover:text-teal-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-2"
                   >
                     {phoneContact.value}
                   </a>
                 </dd>
               </div>
               <div className="min-w-0">
-                <dt className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-400">
+                <dt className="mb-1 text-xs font-semibold uppercase tracking-widest text-slate-600">
                   LOCATION / COVERAGE
                 </dt>
                 <dd className="font-semibold text-slate-800">{BUSINESS_COVERAGE}</dd>
@@ -130,7 +120,7 @@ export default function LetsTalk({ className = "" }) {
             </dl>
 
             <nav aria-label="Teslim Digital social links" className="mt-10">
-              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-slate-400">
+              <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-slate-600">
                 Social links
               </p>
               <div className="flex min-w-0 flex-wrap gap-3">
@@ -142,7 +132,7 @@ export default function LetsTalk({ className = "" }) {
                     rel="noopener noreferrer"
                     aria-label={link.label}
                     title={link.label}
-                    className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-500 hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
+                    className="flex h-12 w-12 items-center justify-center rounded-full border border-slate-200 text-slate-700 transition-all duration-300 hover:-translate-y-0.5 hover:border-teal-500 hover:text-teal-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal-700 focus-visible:ring-offset-2 motion-reduce:transition-none motion-reduce:hover:translate-y-0"
                   >
                     <SocialIcon name={link.icon} />
                   </a>

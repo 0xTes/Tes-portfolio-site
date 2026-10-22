@@ -15,13 +15,13 @@ function Hero() {
         <motion.div
           initial={
             shouldReduceMotion
-              ? { opacity: 0 }
+              ? { opacity: 1 }
               : { opacity: 0, y: 40 }
           }
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7 }}
+          transition={{ duration: shouldReduceMotion ? 0 : 0.7 }}
         >
-          <p className="mb-6 text-sm uppercase tracking-[0.2em] text-teal-600">
+          <p className="mb-6 text-sm uppercase tracking-[0.2em] text-teal-800">
             AI &amp; Automation • Systems • Websites
           </p>
 
@@ -31,7 +31,7 @@ function Hero() {
             Helping businesses eliminate bottlenecks with simple systems, better websites, and AI that drive revenue.
           </h1>
 
-          <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-500">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-600">
             Teslim partners with businesses to design high-performing websites,
             streamline operations with intelligent systems, and implement
             technology that drives measurable growth.
@@ -60,7 +60,7 @@ function Hero() {
         <motion.div
           initial={
             shouldReduceMotion
-              ? { opacity: 0 }
+              ? { opacity: 1 }
               : { opacity: 0, y: 40 }
           }
           animate={
@@ -70,7 +70,7 @@ function Hero() {
           }
             transition={
             shouldReduceMotion
-              ? { duration: 0.7 }
+              ? { duration: 0 }
               : {
                   duration: 4,
                   repeat: Infinity,

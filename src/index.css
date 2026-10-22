@@ -105,7 +105,7 @@ video {
   justify-content: center;
   gap: 0.75rem;
   border-radius: 9999px;
-  background: #0d9488;
+  background: #0f766e;
   padding: 0.875rem 1.75rem;
   color: #ffffff;
   font-weight: 600;
@@ -119,13 +119,13 @@ video {
 
 .button-primary:hover {
   transform: translateY(-2px);
-  background: #0f766e;
+  background: #115e59;
   box-shadow: 0 20px 25px -5px rgba(13, 148, 136, 0.2);
 }
 
 .button-primary:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px #0d9488, 0 0 0 4px var(--bg);
+  box-shadow: 0 0 0 2px #0f766e, 0 0 0 4px var(--bg);
 }
 
 @media (max-width: 639px) {

@@ -16,7 +16,7 @@ export default function WorkPage() {
       <PageShell>
         <section aria-labelledby="work-heading" className="section py-20 md:py-28">
           <div className="max-w-3xl">
-            <p className="text-sm uppercase tracking-[0.2em] text-teal-600">
+            <p className="text-sm uppercase tracking-[0.2em] text-teal-700">
               Selected Work
             </p>
             <h1
